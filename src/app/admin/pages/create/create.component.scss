@@ -10,7 +10,8 @@
     min-width: 245px;
     max-width: 320px;
     align-items: center;
-    input, .upload-img {
+    input,
+    .upload-img {
       display: block;
     }
     .upload-img img {
@@ -22,7 +23,8 @@
     }
 
     &_selected {
-      input, .upload-img {
+      input,
+      .upload-img {
         display: none;
       }
       .img-preview-container {
@@ -42,5 +44,21 @@
         }
       }
     }
+  }
+}
+
+.create-form__left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+//move to the cutom material styles
+::ng-deep {
+  .mdc-floating-label--float-above {
+    transform: translateY(-25px) scale(0.75) !important;
+  }
+  .mdc-text-field__input {
+    height: 35px !important;
   }
 }

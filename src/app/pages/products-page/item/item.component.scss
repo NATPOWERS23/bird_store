@@ -1,5 +1,5 @@
-@import "../../../../assets/styles/helpers/mixins";
-@import "../../../../assets/styles/helpers/variables";
+@import '../../../../assets/styles/helpers/mixins';
+@import '../../../../assets/styles/helpers/variables';
 
 /*buttons*/
 .btn-primary {
@@ -14,7 +14,7 @@
 }
 
 /*product-info-page card*/
-.mat-card:not([class*="mat-elevation-z"]) {
+.mat-card:not([class*='mat-elevation-z']) {
   box-shadow: 0 0 0 0;
 }
 mat-card {
@@ -27,15 +27,15 @@ mat-card {
     width: 100%;
     //max-width: 600px;
     height: 370px;
-    background-image: url("../../../../assets/images/404.jpeg");
+    background-image: url('../../../../assets/images/404.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 15px;
     box-shadow: $inner-shadow;
   }
   .mat-card-subtitle {
-    overflow:hidden ;
-    text-overflow:ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
     height: 2.5rem;
   }
   .small {

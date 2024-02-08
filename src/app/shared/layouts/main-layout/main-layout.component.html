@@ -1,9 +1,9 @@
 <header>
   <mat-toolbar
-    class="d-flex flex-column"
+    class="toolbar d-flex flex-column"
     [ngStyle]="{ backgroundColor: checked ? '#526AF2' : '#F2E9E9' }">
     <div class="d-flex justify-content-between align-items-end">
-      <section class="check-section">
+      <section class="toolbar__check-section">
         <mat-checkbox [(ngModel)]="checked"> </mat-checkbox>
 
         <button
@@ -47,7 +47,7 @@
       </app-button>
     </div>
 
-    <mat-list role="list" *ngIf="checked">
+    <mat-list class="toolbar__options" role="list" *ngIf="checked">
       <mat-list-item role="listitem">ABOUT US</mat-list-item>
       <mat-list-item role="listitem">SHIPMENT</mat-list-item>
       <mat-list-item role="listitem">PAYMENT</mat-list-item>

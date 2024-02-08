@@ -1,5 +1,5 @@
-@import "../../../../assets/styles/helpers/mixins";
-@import "../../../../assets/styles/helpers/variables";
+@import '../../../../assets/styles/helpers/mixins';
+@import '../../../../assets/styles/helpers/variables';
 
 /*search line*/
 .search_field {
@@ -18,7 +18,8 @@
       align-items: center;
     }
 
-    .mdc-line-ripple::before, .mdc-line-ripple::after,
+    .mdc-line-ripple::before,
+    .mdc-line-ripple::after,
     .mdc-text-field--filled .mdc-line-ripple::before,
     .mdc-text-field--filled .mdc-line-ripple::after {
       border-bottom: none !important;
@@ -30,7 +31,7 @@
     }
 
     .mdc-text-field {
-      padding: .5em 1em !important;
+      padding: 0.5em 1em !important;
     }
   }
 }

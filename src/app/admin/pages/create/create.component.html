@@ -2,9 +2,9 @@
 <form
   [formGroup]="createForm"
   (ngSubmit)="submit()"
-  class="mt-5 d-flex flex-column align-items-center">
+  class="create-form mt-5 d-flex flex-column align-items-center">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-6">
+    <div class="create-form__left col-sm-6">
       <mat-form-field
         appearance="outline"
         class="text-secondary w-100"
@@ -14,15 +14,16 @@
         }">
         <mat-label>Назва товару:</mat-label>
         <input matInput id="name" type="text" formControlName="name" />
-        <div
-          *ngIf="
-            createForm.get('name')?.touched && createForm.get('name')?.invalid
-          "
-          class="validation">
-          <small *ngIf="createForm.get('name')?.errors?.required">
+        <mat-hint>
+          <small
+            *ngIf="
+              createForm.get('name')?.touched &&
+              createForm.get('name')?.invalid &&
+              createForm.get('name')?.errors?.required
+            ">
             Введіть назву
           </small>
-        </div>
+        </mat-hint>
       </mat-form-field>
 
       <mat-form-field
@@ -34,15 +35,16 @@
         }">
         <mat-label>Вартість товару:</mat-label>
         <input matInput id="price" type="number" formControlName="price" />
-        <div
-          *ngIf="
-            createForm.get('price')?.touched && createForm.get('price')?.invalid
-          "
-          class="validation">
-          <small *ngIf="createForm.get('price')?.errors?.required">
-            Введіть вартість товару
+        <mat-hint>
+          <small
+            *ngIf="
+              createForm.get('price')?.touched &&
+              createForm.get('price')?.invalid &&
+              createForm.get('price')?.errors?.required
+            ">
+            Введіть ціну
           </small>
-        </div>
+        </mat-hint>
       </mat-form-field>
 
       <mat-form-field
@@ -59,16 +61,16 @@
           id="description"
           type="text"
           formControlName="description" />
-        <div
-          *ngIf="
-            createForm.get('description')?.touched &&
-            createForm.get('description')?.invalid
-          "
-          class="validation">
-          <small *ngIf="createForm.get('description')?.errors?.required">
-            Введіть опис товару
+        <mat-hint>
+          <small
+            *ngIf="
+              createForm.get('description')?.touched &&
+              createForm.get('description')?.invalid &&
+              createForm.get('description')?.errors?.required
+            ">
+            Введіть опис
           </small>
-        </div>
+        </mat-hint>
       </mat-form-field>
 
       <!--  <div class="form-control text-secondary"
@@ -105,7 +107,7 @@
             [ngStyle]="{
               'background-image': 'url(' + selectedFile.src + ')'
             }"></div>
-          <button class='btn btn-close position-absolute m-2'></button>
+          <button class="btn btn-close position-absolute m-2"></button>
         </div>
       </div>
     </div>

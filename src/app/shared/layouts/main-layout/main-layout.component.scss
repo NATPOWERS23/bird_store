@@ -1,82 +1,37 @@
 @import '../../../../assets/styles/helpers/mixins';
 @import '../../../../assets/styles/helpers/variables';
 
-/*header*/
-.mat-toolbar {
+.toolbar {
   background-color: transparent;
   padding: 25px 25px 10px 25px;
   align-items: inherit;
   height: auto;
+
+  &__check-section {
+    position: relative;
+    mat-checkbox {
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      z-index: 1000;
+      opacity: 0 !important;
+    }
+  }
+
+  &__options {
+    @include font-menu;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px !important;
+    padding: 25px 0;
+
+    ::ng-deep .mdc-list-item__content {
+      justify-content: space-around;
+      color: $secondary-text-color;
+    }
+    .mat-mdc-list-item {
+      text-align: center;
+      cursor: pointer;
+    }
+  }
 }
-// .mat-icon {
-//   width: 40px;
-//   height: 40px;
-//   padding: 3px;
-//   border-radius: 5px;
-// }
-
-/*checkbox btn for menu button*/
-.check-section {
-  position: relative;
-  mat-checkbox {
-    position: absolute;
-    left: 15px;
-    top: 8px;
-    z-index: 1000;
-    opacity: 0 !important;
-  }
-  // display: flex;
-  // align-content: center;
-  // align-items: center;
-  // height: auto;
-  // ::ng-deep .mat-mdc-checkbox-layout .mat-mdc-checkbox-inner-container {
-  //   position: absolute;
-  //   z-index: 1000;
-  //   width: 45px;
-  //   height: 45px;
-  //   opacity: 0;
-  // }
-  // button {
-  //   width: 45px;
-  //   height: 45px;
-  // }
-}
-
-// mat-list {
-//   display: flex;
-//   flex-direction: column;
-//   /*padding-bottom: 25px;*/
-//   @include font-menu;
-//   background-color: transparent;
-// }
-// ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
-//   justify-content: space-around;
-//   color: $secondary-text-color;
-// }
-
-/*search line*/
-/*.search_field{
-  border-radius: 20px;
-  box-shadow: $inner-shadow;
-  ::ng-deep .mat-form-field-wrapper{
-    padding: 0 0 0 15px;
-  }
-  ::ng-deep .mat-form-field-flex{
-    align-items: center;
-  }
-  .mat-icon{
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    z-index: 1000;
-    box-shadow: $shadow;
-  }
-}*/
-
-// ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
-//   opacity: 0;
-// }
-// ::ng-deep .mat-form-field-infix {
-//   padding: 0;
-//   border-top: 0;
-// }
