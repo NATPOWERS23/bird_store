@@ -1,5 +1,5 @@
-@import "../../../../assets/styles/helpers/mixins";
-@import "../../../../assets/styles/helpers/variables";
+@import '../../../../assets/styles/helpers/mixins';
+@import '../../../../assets/styles/helpers/variables';
 
 ::ng-deep .mat-button-wrapper {
   display: flex;
@@ -28,5 +28,6 @@
   width: 40px;
 }
 .large {
-  min-height: 60px;
+  min-height: 50px;
+  min-width: 50px;
 }

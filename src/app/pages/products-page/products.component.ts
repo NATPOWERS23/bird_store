@@ -38,9 +38,8 @@ export class ProductsComponent implements OnInit {
   public cartEntries$: Observable<IProductGroup[]>;
 
   /*paginator*/
-  public value = 5;
   public page = 1;
-  public productsPerPage: number = this.value;
+  public productsPerPage = 5;
 
   public search = '';
 
