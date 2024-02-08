@@ -1,0 +1,26 @@
+/*Change font:*/
+@mixin app-main-font {
+  font-family: altasi, sans-serif;
+}
+
+@mixin font-menu {
+  @include app-main-font;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 2px;
+}
+@mixin font-page {
+  @include app-main-font;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 2px;
+}
+@mixin font-numb {
+  @include app-main-font;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 2px;
+}

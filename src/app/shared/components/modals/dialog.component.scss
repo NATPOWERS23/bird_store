@@ -1,0 +1,19 @@
+@import "../../../../assets/styles/helpers/mixins";
+@import "../../../../assets/styles/helpers/variables";
+
+::ng-deep .mat-dialog-container {
+  min-width: 200px;
+  @include font-page;
+  color: $primary-text-color;
+  background-color: $primary-color-bg;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  color: $primary-text-color;
+  background-color: $primary-color-bg;
+}

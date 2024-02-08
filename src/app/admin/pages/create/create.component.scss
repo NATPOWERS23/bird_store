@@ -1,0 +1,46 @@
+.image-controller {
+  padding: 0 10px;
+  .image-upload-container {
+    background-color: #f2e9e9;
+    box-shadow: 2px 2px 10px grey;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    height: 370px;
+    min-width: 245px;
+    max-width: 320px;
+    align-items: center;
+    input, .upload-img {
+      display: block;
+    }
+    .upload-img img {
+      width: 70px;
+      height: auto;
+    }
+    .img-preview-container {
+      display: none;
+    }
+
+    &_selected {
+      input, .upload-img {
+        display: none;
+      }
+      .img-preview-container {
+        display: flex;
+        background-color: transparent;
+        position: relative;
+        width: 100%;
+        justify-content: space-between;
+        cursor: default;
+        border-radius: 15px;
+        .img-preview {
+          background: no-repeat;
+          background-size: cover;
+          height: 370px;
+          width: 100%;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}

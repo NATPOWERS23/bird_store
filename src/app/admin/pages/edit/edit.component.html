@@ -1,0 +1,50 @@
+<div *ngIf="editForm; else Loading">
+  <form [formGroup]="editForm" (ngSubmit)="submit()">
+    <div
+      class="form-control text-secondary"
+      [ngClass]="{
+        invalid: editForm.get('name')?.touched && editForm.get('name')?.invalid
+      }"
+    >
+      <label for="name">Назва товару:</label>
+      <input id="name" type="text" formControlName="name" />
+      <div
+        *ngIf="editForm.get('name')?.touched && editForm.get('name')?.invalid"
+        class="validation"
+      >
+        <small *ngIf="editForm.get('name')?.errors?.required">
+          Введіть назву
+        </small>
+      </div>
+    </div>
+
+    <div
+      class="form-control text-secondary"
+      [ngClass]="{
+        invalid: editForm.get('price')?.touched && editForm.get('price')?.invalid
+      }"
+    >
+      <label for="price">Вартість товару:</label>
+      <input id="price" type="number" formControlName="price" />
+      <div
+        *ngIf="editForm.get('price')?.touched && editForm.get('price')?.invalid"
+        class="validation"
+      >
+        <small *ngIf="editForm.get('price')?.errors?.required">
+          Введіть вартість товару
+        </small>
+      </div>
+    </div>
+
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="editForm.invalid || submitted"
+    >
+      Оновити
+    </button>
+  </form>
+</div>
+<ng-template #Loading>
+  <p class="text-center">Дані завантажуються...</p>
+</ng-template>

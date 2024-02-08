@@ -1,0 +1,52 @@
+@import '../../../assets/styles/helpers/mixins';
+@import '../../../assets/styles/helpers/variables';
+
+/*main*/
+/*paginator*/
+.paginator-custom {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  ::ng-deep ul.ngx-pagination {
+    padding-left: 0;
+    .pagination-previous a::before,
+    .pagination-previous.disabled::before,
+    .pagination-next a::after,
+    .pagination-next.disabled::after {
+      content: '';
+    }
+    .pagination-next,
+    .pagination-previous {
+      display: none;
+    }
+    li,
+    li.current {
+      background-color: transparent;
+      color: #7c838a;
+      min-width: 30px;
+      @include font-numb;
+    }
+    a,
+    button {
+      color: #7c838a;
+      text-decoration: none;
+      padding: 7px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      box-shadow: $shadow;
+    }
+  }
+}
+.btn-group {
+  border-radius: 10px;
+  margin-top: 10px;
+  .btn {
+    font-family: altasi, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 2px;
+    color: $primary-text-color;
+  }
+}

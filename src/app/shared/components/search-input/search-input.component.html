@@ -1,0 +1,14 @@
+<div class="search_form d-flex justify-content-end mt-3">
+  <mat-form-field
+    class="search_field"
+    [ngStyle]="{
+      width: checked ? '100%' : '80%',
+      color: checked ? 'plum' : 'grey'
+    }">
+    <input matInput placeholder="Search" name="search" #searchInput />
+    <app-button
+      icon_name="search"
+      [size]="ButtonSize.SMALL"
+      (click)="searchEvent.emit(searchInput.value)"></app-button>
+  </mat-form-field>
+</div>

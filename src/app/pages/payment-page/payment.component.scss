@@ -1,0 +1,28 @@
+@import "../../../assets/styles/helpers/mixins";
+@import "../../../assets/styles/helpers/variables";
+@import "../../../assets/styles/components/buttons";
+
+.custom_button {
+  width: 100%;
+}
+
+mat-card {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0;
+  margin: 10px 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: $primary-text-color;
+  @include font-menu;
+}
+
+mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: $inner-shadow;
+}
+
+img {
+  height: 45px;
+}

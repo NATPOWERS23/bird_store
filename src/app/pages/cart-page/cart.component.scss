@@ -1,0 +1,43 @@
+@import "../../../assets/styles/helpers/mixins";
+@import "../../../assets/styles/helpers/variables";
+@import "../../../assets/styles/components/buttons";
+
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: $inner-shadow;
+}
+
+mat-card {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 0;
+  margin: 10px 0;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  color: $primary-text-color;
+  @include font-menu;
+  mat-card-content {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .item-options {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+  .products-image {
+    width: 70px;
+    height: 90px;
+    background-image: url("../../../assets/images/404.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    box-shadow: $inner-shadow;
+  }
+  .cart__info {
+
+  }
+}

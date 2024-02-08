@@ -1,0 +1,24 @@
+<mat-card class="slider">
+  <mat-card-content>
+    <div
+      class="slider-label-container"
+      [class]="vertical ? 'slider-label-vertical' : 'slider-label-horizontal'"
+    >
+      <label class="slider-value-label">{{ value }}</label>
+      <label id="slider-name-label" class="slider-name-label">
+        per page</label
+      >
+    </div>
+
+    <mat-slider
+      class="example-margin"
+      [disabled]="disabled"
+      [max]="max"
+      [min]="min"
+      [step]="step"
+      [discrete]="thumbLabel"
+      [showTickMarks]="false">
+      <input matSliderThumb [(ngModel)]="value" (change)="changePageSize()" #slider>
+    </mat-slider>
+  </mat-card-content>
+</mat-card>
