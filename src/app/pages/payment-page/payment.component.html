@@ -1,6 +1,14 @@
 <page-title title="Payment"/>
+
+<section>
+  <app-button icon_name='arrow_back'
+              [size]='ButtonSize.SMALL'
+              [routerLink]="['/cart']"
+  ></app-button>
+</section>
+
 <mat-card>
-  <mat-card-content class="d-flex w-100 flex-column gap-5">
+  <mat-card-content class="d-flex w-100 flex-column gap-2">
     <app-button [size]="ButtonSize.LARGE" class="d-grid">
       <span class="pe-3 ps-3">Debit or credit card</span>
       <div class="pe-3 ps-3">
@@ -22,12 +30,9 @@
       </div>
     </app-button>
 
-    <app-button [size]="ButtonSize.LARGE" class="d-grid">
-      <span class="pe-3 ps-3">Paypal</span>
-      <div class="pe-3 ps-3">
-        <img src="../../../assets/images/paypal.png" alt="" />
-      </div>
-    </app-button>
+    <div class="d-grid">
+      <app-paypal [countCart]="countCart$"></app-paypal>
+    </div>
 
     <app-button [size]="ButtonSize.LARGE" class="d-grid">
       <span class="pe-3 ps-3">Gift card</span>

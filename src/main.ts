@@ -28,12 +28,6 @@ import { ProductsEffects } from './app/state/products/products.effects';
 
 export const ENV = new InjectionToken('environment');
 
-// const INTERCEPTOR_PROVIDER: Provider = {
-//   provide: HTTP_INTERCEPTORS,
-//   multi: true,
-//   useClass: AuthInterceptor,
-// };
-
 const ROOT_REDUCERS = {
   cartEntries: cartReducer,
   productsEntries: productsReducer,
