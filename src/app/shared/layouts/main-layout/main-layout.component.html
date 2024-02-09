@@ -4,45 +4,30 @@
     [ngStyle]="{ backgroundColor: checked ? '#526AF2' : '#F2E9E9' }">
     <div class="d-flex justify-content-between align-items-end">
       <section class="toolbar__check-section">
-        <mat-checkbox [(ngModel)]="checked"> </mat-checkbox>
+        <mat-checkbox [(ngModel)]="!!checked"> </mat-checkbox>
 
         <app-button
           [size]="ButtonSize.LARGE"
           [buttonType]="ButtonType.CONTRAST"
-          [checked]="checked">
+          [checked]="!!checked">
           <img
-            *ngIf="!checked"
-            src="../../../../assets/images/Menu.png"
-            alt="menu" />
-          <img
-            *ngIf="checked"
-            src="../../../../assets/images/Menu2.png"
+            src="../../../../assets/images/Menu{{ +checked }}.png"
             alt="menu" />
         </app-button>
       </section>
 
       <a routerLink="/">
         <img
-          *ngIf="!checked"
-          src="../../../../assets/images/Bird-logo.png"
-          alt="logo" />
-        <img
-          *ngIf="checked"
-          src="../../../../assets/images/Bird-logo2.png"
+          src="../../../../assets/images/Bird-logo{{ +checked }}.png"
           alt="logo" />
       </a>
 
       <app-button
         [buttonType]="ButtonType.CONTRAST"
-        [checked]="checked"
+        [checked]="!!checked"
         routerLink="/cart">
         <img
-          *ngIf="!checked"
-          src="../../../../assets/images/Cart.png"
-          alt="cart" />
-        <img
-          *ngIf="checked"
-          src="../../../../assets/images/Cart2.png"
+          src="../../../../assets/images/Cart{{ +checked }}.png"
           alt="cart" />
       </app-button>
     </div>

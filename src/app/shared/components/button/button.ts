@@ -9,3 +9,8 @@ export enum ButtonSize {
   MEDIUM = 'medium',
   SMALL = 'small',
 }
+
+export enum IconType {
+  DEFAULT = 0,
+  CHECKED = 1,
+}

@@ -2,13 +2,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonSize } from '@shared/components/button/button';
 import { MaterialModule } from '@shared/material/material.module';
 import { ButtonComponent } from '@shared/components/button/button.component';
+import { PageTitleComponent } from '@shared/components/page-title/page-title.component';
 
 @Component({
   selector: 'app-payment-page',
   standalone: true,
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss'],
-  imports: [MaterialModule, ButtonComponent],
+  imports: [MaterialModule, ButtonComponent, PageTitleComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentComponent {

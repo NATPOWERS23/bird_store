@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { ButtonSize, ButtonType } from '@shared/components/button/button';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ButtonSize,
+  ButtonType,
+  IconType,
+} from '@shared/components/button/button';
 import { MaterialModule } from '@shared/material/material.module';
 import { NgIf, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,10 +24,11 @@ import { ButtonComponent } from '@shared/components/button/button.component';
     RouterOutlet,
     NgIf,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent {
   public ButtonSize: typeof ButtonSize = ButtonSize;
   public ButtonType: typeof ButtonType = ButtonType;
-  /*checkbox*/
-  public checked = false;
+  public IconType: typeof IconType = IconType;
+  public checked = IconType.DEFAULT;
 }
