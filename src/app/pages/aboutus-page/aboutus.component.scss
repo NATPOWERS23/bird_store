@@ -1,0 +1,12 @@
+@import '../../../assets/styles/helpers/mixins';
+@import '../../../assets/styles/helpers/variables';
+
+.about-image {
+  width: 100%;
+  height: 370px;
+  background-image: url('../../../assets/images/About/store.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  box-shadow: $inner-shadow;
+}

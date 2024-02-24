@@ -5,6 +5,7 @@ import { ProductsComponent } from './pages/products-page/products.component';
 import { ProductInfoComponent } from './pages/product-info-page/product-info.component';
 import { CartComponent } from './pages/cart-page/cart.component';
 import { PaymentComponent } from './pages/payment-page/payment.component';
+import { AboutusComponent } from './pages/aboutus-page/aboutus.component';
 
 export const appRoutes: Route[] = [
   {
@@ -31,6 +32,10 @@ export const appRoutes: Route[] = [
       {
         path: 'payment',
         component: PaymentComponent,
+      },
+      {
+        path: 'aboutus',
+        component: AboutusComponent,
       },
     ],
   },

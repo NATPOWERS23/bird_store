@@ -1,6 +1,12 @@
-<button class="btn btn-primary rounded {{size}} {{buttonType}}"
-        [ngClass]="{'checked': checked}"
-        [disabled]="disabled">
-  <mat-icon *ngIf="icon_name">{{icon_name}}</mat-icon>
-  <ng-content></ng-content>
+<button
+  class="btn btn-primary p-1 rounded {{ size }} {{ buttonType }} {{
+    parent_class
+  }}"
+  [ngClass]="{ checked: checked }"
+  [disabled]="disabled">
+  <mat-icon *ngIf="icon_name">{{ icon_name }}</mat-icon>
+  <img [src]="img_src" *ngIf="img_src" />
+  <div class="button-text">
+    <ng-content></ng-content>
+  </div>
 </button>

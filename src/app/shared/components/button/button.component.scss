@@ -31,3 +31,10 @@
   min-height: 50px;
   min-width: 50px;
 }
+
+.just-icon .button-text {
+  display: block;
+  @include responsive(mobile) {
+    display: none;
+  }
+}

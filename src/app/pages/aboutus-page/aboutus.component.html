@@ -1,0 +1,39 @@
+<page-title title="About us"></page-title>
+
+<section class="about__nav d-flex gap-2">
+  <app-button
+    icon_name="home"
+    [size]="ButtonSize.SMALL"
+    routerLink="/"></app-button>
+
+  <app-button
+    parent_class="just-icon"
+    icon_name="payment"
+    [size]="ButtonSize.SMALL"
+    routerLink="/payment-info"
+    ><span class="ms-2">About the payment</span></app-button
+  >
+
+  <app-button
+    parent_class="just-icon"
+    icon_name="local_shipping"
+    [size]="ButtonSize.SMALL"
+    routerLink="/shipment-info"
+    ><span class="ms-2">About the delivery</span></app-button
+  >
+</section>
+
+<section class="about__content">
+  <mat-card class="card mt-3 mb-5">
+    <mat-card-content class="about-image mb-3"></mat-card-content>
+
+    <h3 class="text-secondary">About Bird store history</h3>
+
+    <p class="text-secondary">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus
+      debitis ea tenetur officia, quam nihil, nesciunt dicta rem eius provident
+      at, beatae recusandae corrupti placeat quisquam labore! Soluta, aliquam
+      doloribus.
+    </p>
+  </mat-card>
+</section>

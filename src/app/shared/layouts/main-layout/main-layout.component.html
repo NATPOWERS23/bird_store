@@ -7,12 +7,10 @@
         <mat-checkbox [(ngModel)]="!!checked"> </mat-checkbox>
 
         <app-button
+          img_src="../../../../assets/images/Menu{{ +checked }}.png"
           [size]="ButtonSize.LARGE"
           [buttonType]="ButtonType.CONTRAST"
           [checked]="!!checked">
-          <img
-            src="../../../../assets/images/Menu{{ +checked }}.png"
-            alt="menu" />
         </app-button>
       </section>
 
@@ -23,17 +21,18 @@
       </a>
 
       <app-button
+        img_src="../../../../assets/images/Cart{{ +checked }}.png"
+        [size]="ButtonSize.LARGE"
         [buttonType]="ButtonType.CONTRAST"
         [checked]="!!checked"
         routerLink="/cart">
-        <img
-          src="../../../../assets/images/Cart{{ +checked }}.png"
-          alt="cart" />
       </app-button>
     </div>
 
     <mat-list class="toolbar__options" role="list" *ngIf="checked">
-      <mat-list-item role="listitem">ABOUT US</mat-list-item>
+      <mat-list-item role="listitem" routerLink="/aboutus"
+        >ABOUT US</mat-list-item
+      >
       <mat-list-item role="listitem">SHIPMENT</mat-list-item>
       <mat-list-item role="listitem">PAYMENT</mat-list-item>
       <mat-list-item role="listitem">SALE %</mat-list-item>
