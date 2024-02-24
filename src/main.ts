@@ -1,30 +1,25 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { importProvidersFrom, InjectionToken, Provider } from '@angular/core';
+import { importProvidersFrom, InjectionToken } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import {
-  HTTP_INTERCEPTORS,
-  provideHttpClient,
-  withInterceptors,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   BrowserAnimationsModule,
   provideAnimations,
   provideNoopAnimations,
 } from '@angular/platform-browser/animations';
 
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
-import { provideEffects } from '@ngrx/effects';
-import { provideStore } from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authInterceptor } from '@shared/interceptors/auth.interceptor';
-import {
-  cartReducer,
-  metaReducerLocalStorage,
-} from './app/state/cart/cart.reducer';
+import { cartReducer } from './app/state/cart/cart.reducer';
 import { productsReducer } from './app/state/products/products.reducer';
 import { ProductsEffects } from './app/state/products/products.effects';
+import { metaReducerCartLocalStorage } from './app/state/cart/cart-metareducer';
 
 export const ENV = new InjectionToken('environment');
 
@@ -41,10 +36,12 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     provideNoopAnimations(),
     provideEffects([ProductsEffects]),
-    provideStore(ROOT_REDUCERS, { metaReducers: [metaReducerLocalStorage] }),
     provideStoreDevtools({
       logOnly: environment.production,
     }),
     { provide: ENV, useValue: environment },
+    provideStore(ROOT_REDUCERS, {
+      metaReducers: [metaReducerCartLocalStorage],
+    }),
   ],
 }).catch(error => console.log(error));
