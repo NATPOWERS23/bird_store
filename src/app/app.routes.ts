@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { MainLayoutComponent } from '@shared/layouts/main-layout/main-layout.component';
+import { MainLayoutComponent } from '@core/shared/layouts/main-layout/main-layout.component';
 import { ProductsComponent } from './pages/products-page/products.component';
 import { ProductInfoComponent } from './pages/product-info-page/product-info.component';
 import { CartComponent } from './pages/cart-page/cart.component';

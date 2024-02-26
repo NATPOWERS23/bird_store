@@ -9,7 +9,7 @@ import {
   Output,
 } from '@angular/core';
 
-import { IPageSizeParams } from './types/slider.interface';
+import { IPageSizeParams } from './slider.interface';
 
 @Component({
   selector: 'app-custom-slider',

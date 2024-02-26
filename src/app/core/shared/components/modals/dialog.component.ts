@@ -5,7 +5,7 @@ import {
   Inject,
 } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MaterialModule } from '@shared/material/material.module';
+import { MaterialModule } from '@core/material/material.module';
 
 @Component({
   selector: 'app-dialog',

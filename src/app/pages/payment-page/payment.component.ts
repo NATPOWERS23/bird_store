@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+
+import { Store } from '@ngrx/store';
+
 import { ButtonSize } from '@shared/components/button/button';
-import { MaterialModule } from '@shared/material/material.module';
+import { MaterialModule } from '@core/material/material.module';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { PageTitleComponent } from '@shared/components/page-title/page-title.component';
 import { PaypalComponent } from './paypal/paypal.component';
-import { Store } from '@ngrx/store';
 import { selectTotalPrice } from 'src/app/state/cart/cart.selectors';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payment-page',
@@ -19,6 +22,7 @@ import { RouterLink } from '@angular/router';
     PageTitleComponent,
     PaypalComponent,
     RouterLink,
+    AsyncPipe,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

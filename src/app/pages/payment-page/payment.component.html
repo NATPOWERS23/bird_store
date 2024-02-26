@@ -7,6 +7,10 @@
     [routerLink]="['/cart']"></app-button>
 </section>
 
+<section class="cart__description">
+  <h3 class="mt-5 text-secondary">Total price is: {{ countCart$ | async }}</h3>
+</section>
+
 <mat-card>
   <mat-card-content class="d-flex w-100 flex-column gap-2">
     <app-button [size]="ButtonSize.LARGE" class="d-grid">

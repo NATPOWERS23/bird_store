@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Action, ActionReducer, INIT, UPDATE } from '@ngrx/store';
-import { LocalstoreService } from '@shared/services/localstore.service';
+import { LocalstoreService } from '@core/services/localstore.service';
 import { CartState } from './cart-state.interface';
 
 export const metaReducerCartLocalStorage = <S, A extends Action = Action>(

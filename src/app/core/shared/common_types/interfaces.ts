@@ -11,11 +11,10 @@ export interface IProduct {
   price: number;
   imageUrl: string;
   quantity?: number;
+  onSale: boolean;
 }
 
 export interface IProductGroup {
   product: IProduct;
   count: number;
 }
-
-

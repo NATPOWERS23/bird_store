@@ -14,7 +14,7 @@
         </app-button>
       </section>
 
-      <a routerLink="/">
+      <a routerLink="/" (click)="filterService.clearFilters()">
         <img
           src="../../../../assets/images/Bird-logo{{ +checked }}.png"
           alt="logo" />
@@ -39,7 +39,12 @@
       <mat-list-item role="listitem" routerLink="/info/payment"
         >PAYMENT</mat-list-item
       >
-      <mat-list-item role="listitem">SALE %</mat-list-item>
+      <mat-list-item
+        role="listitem"
+        (click)="filterService.setFilterValue({ onSale: true })"
+        routerLink="/"
+        >SALE %</mat-list-item
+      >
     </mat-list>
   </mat-toolbar>
 </header>
@@ -48,3 +53,4 @@
     <router-outlet></router-outlet>
   </div>
 </main>
+<footer class="footer"></footer>

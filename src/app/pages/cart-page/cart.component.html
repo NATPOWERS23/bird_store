@@ -1,59 +1,64 @@
 <div class="d-flex justify-content-between pt-3 pb-3">
-  <app-button icon_name='arrow_back'
-              [size]='ButtonSize.SMALL'
-              [routerLink]="['/']"
-  ></app-button>
-  <app-button [size]='ButtonSize.SMALL' routerLink="/">
-    <span class='p-2'>Read about shipment ...</span>
+  <app-button
+    icon_name="arrow_back"
+    [size]="ButtonSize.SMALL"
+    [routerLink]="['/']"></app-button>
+  <app-button [size]="ButtonSize.SMALL" routerLink="/info/delivery">
+    <span class="p-2">Read about the delivery...</span>
   </app-button>
 </div>
 
-<div *ngFor="let item of ( cartEntries$ | async )">
+<div *ngFor="let item of cartEntries$ | async">
   <mat-card>
     <mat-card-content
       class="products-image"
       [routerLink]="['/product-info-page', item.product.id]"
       [ngStyle]="{
-      'background-image': item.product.imageUrl
-        ? 'url(' + item.product.imageUrl + ')'
-        : 'url(../../../../assets/images/404.jpeg)'
-    }"
-    ></mat-card-content>
-    <mat-card-content>{{item.product.description}}</mat-card-content>
+        'background-image': item.product.imageUrl
+          ? 'url(' + item.product.imageUrl + ')'
+          : 'url(../../../../assets/images/404.jpeg)'
+      }"></mat-card-content>
+    <mat-card-content>{{ item.product.description }}</mat-card-content>
     <mat-card-content>
       <div class="item-options">
-
         <span> item added </span>
 
-        <app-button (click)="oneLess(item)"
-                    icon_name='chevron_left'
-                    [size]='ButtonSize.SMALL'
-        ></app-button>
+        <app-button
+          (click)="oneLess(item)"
+          icon_name="chevron_left"
+          [size]="ButtonSize.SMALL"></app-button>
 
         <span>{{ item.count }}</span>
 
-        <app-button (click)="oneMore(item)"
-                    icon_name='chevron_right'
-                    [size]='ButtonSize.SMALL'
-        ></app-button>
+        <app-button
+          (click)="oneMore(item)"
+          icon_name="chevron_right"
+          [size]="ButtonSize.SMALL"></app-button>
 
-        <app-button icon_name='delete'
-                    [size]='ButtonSize.SMALL'
-                    (click)="removeProduct(item.product)"
-        ></app-button>
+        <app-button
+          icon_name="clear"
+          [size]="ButtonSize.SMALL"
+          (click)="removeProduct(item.product)"></app-button>
       </div>
-      <app-button [size]='ButtonSize.SMALL' (click)="toPayment()">
-        <span class='p-2'>ORDER</span>
-      </app-button>
     </mat-card-content>
   </mat-card>
 </div>
 <div class="d-flex justify-content-between">
-  <app-button [size]='ButtonSize.SMALL' (click)="clearCart()">
-    <span class='p-2'>REMOVE ALL</span>
+  <app-button
+    parent_class="just-icon"
+    [size]="ButtonSize.SMALL"
+    (click)="clearCart()"
+    icon_name="delete">
+    <span class="p-2">CLEAR CART</span>
+  </app-button>
+
+  <app-button [size]="ButtonSize.SMALL" (click)="toPayment()">
+    <span class="p-2">ORDER</span>
   </app-button>
 
   <div class="d-flex align-items-center p-2">
-    <span *ngIf="(cartEntries$ | async)?.length" class="text-secondary">Total price: {{countCart$ | async}}</span>
+    <span *ngIf="(cartEntries$ | async)?.length" class="text-secondary"
+      >Total price: {{ countCart$ | async }}</span
+    >
   </div>
 </div>

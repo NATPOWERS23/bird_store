@@ -15,11 +15,12 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
-import { authInterceptor } from '@shared/interceptors/auth.interceptor';
 import { cartReducer } from './app/state/cart/cart.reducer';
 import { productsReducer } from './app/state/products/products.reducer';
 import { ProductsEffects } from './app/state/products/products.effects';
 import { metaReducerCartLocalStorage } from './app/state/cart/cart-metareducer';
+import { authInterceptor } from '@core/interceptors/auth.interceptor';
+import { LoadingInterceptor } from '@core/interceptors/loading.interceptor';
 
 export const ENV = new InjectionToken('environment');
 
@@ -31,7 +32,7 @@ const ROOT_REDUCERS = {
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, LoadingInterceptor])),
     importProvidersFrom(BrowserAnimationsModule),
     provideAnimations(),
     provideNoopAnimations(),

@@ -26,10 +26,10 @@ import {
   removeProduct,
 } from '../../state/cart/cart.actions';
 
-import { IProduct, IProductGroup } from '@shared/common_types/interfaces';
 import { DialogComponent } from '@shared/components/modals/dialog.component';
 import { ButtonSize } from '@shared/components/button/button';
 import { ButtonComponent } from '@shared/components/button/button.component';
+import { IProductGroup, IProduct } from '@shared/common_types/interfaces';
 
 @Component({
   selector: 'app-cart',

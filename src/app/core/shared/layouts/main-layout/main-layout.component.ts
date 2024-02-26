@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   ButtonSize,
   ButtonType,
   IconType,
-} from '@shared/components/button/button';
-import { MaterialModule } from '@shared/material/material.module';
+} from '@core/shared/components/button/button';
+import { MaterialModule } from '@core/material/material.module';
 import { NgIf, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ButtonComponent } from '@shared/components/button/button.component';
+import { ButtonComponent } from '@core/shared/components/button/button.component';
+import { FilterService } from '@core/services/filter.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -31,4 +32,5 @@ export class MainLayoutComponent {
   public ButtonType: typeof ButtonType = ButtonType;
   public IconType: typeof IconType = IconType;
   public checked = IconType.DEFAULT;
+  public filterService = inject(FilterService);
 }

@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { CurrencyPipe, NgClass, NgIf, NgStyle } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
-import { BehaviorSubject, timer } from 'rxjs';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { Store } from '@ngrx/store';
 
@@ -20,7 +19,7 @@ import {
   addProduct,
   removeAllEntriesOfProduct,
 } from '../../../state/cart/cart.actions';
-import { MaterialModule } from '@shared/material/material.module';
+import { MaterialModule } from '@core/material/material.module';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { ButtonCheckboxComponent } from '@shared/components/button-checkbox/button-checkbox.component';
 
@@ -39,6 +38,7 @@ import { ButtonCheckboxComponent } from '@shared/components/button-checkbox/butt
     ButtonCheckboxComponent,
     CurrencyPipe,
     NgIf,
+    MatBadgeModule,
   ],
 })
 export class ItemComponent implements OnInit {

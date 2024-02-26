@@ -21,7 +21,7 @@ import { ProductsService } from '../../../pages/products-page/products.service';
 import { AlertService } from '../../shared/services/alert.service';
 import { ICreateForm, ImageSnippet } from './types/icreate-form';
 import { IProduct } from '@shared/common_types/interfaces';
-import { MaterialModule } from '@shared/material/material.module';
+import { MaterialModule } from '@core/material/material.module';
 
 @Component({
   selector: 'app-create',

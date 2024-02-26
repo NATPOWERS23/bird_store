@@ -8,8 +8,8 @@ export const initialProductsState: IProduct[] = [];
 
 export const productsReducer = createReducer(
   initialProductsState,
-  on(ProductsAction.loadProducts, (state) => {
-    return {...state, status: 'loading'}
+  on(ProductsAction.loadProducts, state => {
+    return { ...state, status: 'loading' };
   }),
 
   on(ProductsAction.loadProductsSuccess, (state, products) => {
@@ -17,15 +17,15 @@ export const productsReducer = createReducer(
       ...state,
       products: products.products,
       error: null,
-      status: 'success'
-    }
+      status: 'success',
+    };
   }),
 
   on(ProductsAction.loadProductsFailure, (state, error) => {
     return {
       ...state,
       error: error,
-      status: 'error'
-    }
+      status: 'error',
+    };
   })
 );

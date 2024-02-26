@@ -1,5 +1,5 @@
-@import '../../../../assets/styles/helpers/mixins';
-@import '../../../../assets/styles/helpers/variables';
+@import '../../../../../assets/styles/helpers/mixins';
+@import '../../../../../assets/styles/helpers/variables';
 
 .toolbar {
   background-color: transparent;
@@ -34,4 +34,8 @@
       cursor: pointer;
     }
   }
+}
+
+.footer {
+  min-height: 2em;
 }

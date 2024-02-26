@@ -9,7 +9,13 @@
       'background-image': product.imageUrl
         ? 'url(' + product.imageUrl + ')'
         : 'url(../../../../assets/images/404.jpeg)'
-    }"></mat-card-content>
+    }">
+    <div
+      matBadge="SALE"
+      matBadgeOverlap="true"
+      matBadgeColor="warn"
+      *ngIf="product.onSale"></div>
+  </mat-card-content>
 
   <mat-card-subtitle
     class="card-text bg-transparent p-1"

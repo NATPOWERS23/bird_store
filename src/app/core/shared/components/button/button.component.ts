@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ButtonSize, ButtonType } from '@shared/components/button/button';
+import { ButtonSize, ButtonType } from '@core/shared/components/button/button';
 import { NgClass, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 

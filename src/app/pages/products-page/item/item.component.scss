@@ -75,3 +75,11 @@ mat-card {
     }
   }
 }
+
+.mat-badge-content {
+  width: auto;
+  display: grid;
+  min-width: 32px;
+  min-height: 28px;
+  padding: 4px 5px 10px;
+}
