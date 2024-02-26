@@ -1,0 +1,20 @@
+<page-title [title]="page.title"></page-title>
+
+<section class="{{ page.pageId }}__nav d-flex gap-2">
+  <app-button
+    *ngFor="let btn of buttonSettings"
+    parent_class="just-icon"
+    [icon_name]="btn.icon"
+    [size]="ButtonSize.SMALL"
+    [routerLink]="btn.link"></app-button>
+</section>
+
+<section class="{{ page.pageId }}__content">
+  <mat-card class="card mt-3 mb-5">
+    <mat-card-content class="{{ page.pageId }}__image mb-3"></mat-card-content>
+
+    <h3 class="text-secondary">{{ page.subTitle }}</h3>
+
+    <p class="text-secondary">{{ page.textContent }}</p>
+  </mat-card>
+</section>

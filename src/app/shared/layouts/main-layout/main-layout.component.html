@@ -30,11 +30,15 @@
     </div>
 
     <mat-list class="toolbar__options" role="list" *ngIf="checked">
-      <mat-list-item role="listitem" routerLink="/aboutus"
+      <mat-list-item role="listitem" routerLink="/info/aboutus"
         >ABOUT US</mat-list-item
       >
-      <mat-list-item role="listitem">SHIPMENT</mat-list-item>
-      <mat-list-item role="listitem">PAYMENT</mat-list-item>
+      <mat-list-item role="listitem" routerLink="/info/delivery"
+        >SHIPMENT</mat-list-item
+      >
+      <mat-list-item role="listitem" routerLink="/info/payment"
+        >PAYMENT</mat-list-item
+      >
       <mat-list-item role="listitem">SALE %</mat-list-item>
     </mat-list>
   </mat-toolbar>

@@ -5,7 +5,7 @@ import { ProductsComponent } from './pages/products-page/products.component';
 import { ProductInfoComponent } from './pages/product-info-page/product-info.component';
 import { CartComponent } from './pages/cart-page/cart.component';
 import { PaymentComponent } from './pages/payment-page/payment.component';
-import { AboutusComponent } from './pages/aboutus-page/aboutus.component';
+import { InfoComponent } from './pages/info-page/info.component';
 
 export const appRoutes: Route[] = [
   {
@@ -34,8 +34,13 @@ export const appRoutes: Route[] = [
         component: PaymentComponent,
       },
       {
-        path: 'aboutus',
-        component: AboutusComponent,
+        path: 'info/:id',
+        component: InfoComponent,
+      },
+      {
+        path: 'info',
+        redirectTo: 'info/aboutus',
+        pathMatch: 'full',
       },
     ],
   },
