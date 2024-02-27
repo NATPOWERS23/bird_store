@@ -1,4 +1,4 @@
-import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './shared/layouts/admin-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -33,7 +33,7 @@ export default [
         canActivate: [AuthGuard],
       },
       {
-        path: 'product-info-page/:id/edit',
+        path: 'product/:id/edit',
         component: EditComponent,
         canActivate: [AuthGuard],
       },

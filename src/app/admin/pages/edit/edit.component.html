@@ -1,46 +1,92 @@
-<div *ngIf="editForm; else Loading">
-  <form [formGroup]="editForm" (ngSubmit)="submit()">
-    <div
-      class="form-control text-secondary"
-      [ngClass]="{
-        invalid: editForm.get('name')?.touched && editForm.get('name')?.invalid
-      }"
-    >
-      <label for="name">Назва товару:</label>
-      <input id="name" type="text" formControlName="name" />
-      <div
-        *ngIf="editForm.get('name')?.touched && editForm.get('name')?.invalid"
-        class="validation"
-      >
-        <small *ngIf="editForm.get('name')?.errors?.required">
-          Введіть назву
-        </small>
-      </div>
+<div
+  *ngIf="editForm; else Loading"
+  class="d-flex flex-column align-items-center mt-2">
+  <h1 class="text-center text-secondary">
+    Редагування інформації про товар: {{ editForm.value.name }}
+  </h1>
+
+  <form [formGroup]="editForm" (ngSubmit)="submit()" class="row">
+    <div class="col-6">
+      <mat-form-field
+        appearance="outline"
+        class="text-secondary w-100"
+        [ngClass]="{
+          invalid:
+            editForm.get('name')?.touched && editForm.get('name')?.invalid
+        }">
+        <mat-label for="name">Назва товару:</mat-label>
+        <input matInput id="name" type="text" formControlName="name" />
+        <mat-hint>
+          <small
+            *ngIf="
+              editForm.get('name')?.touched &&
+              editForm.get('name')?.invalid &&
+              editForm.get('name')?.errors?.required
+            ">
+            Введіть назву
+          </small>
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="text-secondary w-100"
+        [ngClass]="{
+          invalid:
+            editForm.get('price')?.touched && editForm.get('price')?.invalid
+        }">
+        <mat-label for="price">Вартість товару:</mat-label>
+        <input matInput id="price" type="number" formControlName="price" />
+        <mat-hint>
+          <small
+            *ngIf="
+              editForm.get('price')?.touched &&
+              editForm.get('price')?.invalid &&
+              editForm.get('price')?.errors?.required
+            ">
+            Введіть вартість товару
+          </small>
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="text-secondary w-100"
+        [ngClass]="{
+          invalid:
+            editForm.get('description')?.touched &&
+            editForm.get('description')?.invalid
+        }">
+        <mat-label>Опис товару:</mat-label>
+        <input
+          matInput
+          id="description"
+          type="text"
+          formControlName="description" />
+        <mat-hint>
+          <small
+            *ngIf="
+              editForm.get('description')?.touched &&
+              editForm.get('description')?.invalid &&
+              editForm.get('description')?.errors?.required
+            ">
+            Введіть опис
+          </small>
+        </mat-hint>
+      </mat-form-field>
     </div>
 
-    <div
-      class="form-control text-secondary"
-      [ngClass]="{
-        invalid: editForm.get('price')?.touched && editForm.get('price')?.invalid
-      }"
-    >
-      <label for="price">Вартість товару:</label>
-      <input id="price" type="number" formControlName="price" />
-      <div
-        *ngIf="editForm.get('price')?.touched && editForm.get('price')?.invalid"
-        class="validation"
-      >
-        <small *ngIf="editForm.get('price')?.errors?.required">
-          Введіть вартість товару
-        </small>
-      </div>
+    <div *ngIf="!!product" class="col-11 col-sm-5 mt-3 mt-sm-0">
+      <app-file-uploader
+        [selectedFile]="{ src: product.imageUrl || '' }"
+        (imageSnippetEventEmitter)="selectedFile = $event"></app-file-uploader>
     </div>
-
     <button
-      class="btn btn-primary"
+      class="btn btn-secondary text-primary mt-3"
+      mat-raised-button
+      color="primary"
       type="submit"
-      [disabled]="editForm.invalid || submitted"
-    >
+      [disabled]="editForm.invalid || submitted">
       Оновити
     </button>
   </form>

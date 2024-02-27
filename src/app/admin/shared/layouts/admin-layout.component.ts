@@ -5,8 +5,8 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { AlertComponent } from '../alert/alert.component';
+import { AuthService } from '../services/auth.service';
+import { AlertComponent } from '../components/alert/alert.component';
 import { NgIf } from '@angular/common';
 
 @Component({

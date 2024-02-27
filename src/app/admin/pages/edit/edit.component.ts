@@ -20,19 +20,31 @@ import { switchMap } from 'rxjs/operators';
 import { IProduct } from '@shared/common_types/interfaces';
 import { AlertService } from '../../shared/services/alert.service';
 import { ProductsService } from '../../../pages/products-page/products.service';
-import { IEditForm } from './types/edit';
+import { IEditForm } from './edit-interfaces';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ImageSnippet } from '../create/types/icreate-form';
+import { FileUploaderService } from '../../shared/components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  imports: [ReactiveFormsModule, NgClass, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    NgClass,
+    NgIf,
+    MatFormFieldModule,
+    MatInputModule,
+    FileUploaderService,
+  ],
 })
 export class EditComponent implements OnInit {
   public editForm!: FormGroup<IEditForm>;
   public product: IProduct | undefined = undefined;
+  public selectedFile: ImageSnippet = { src: '' };
   public submitted = false;
 
   private route$ = inject(ActivatedRoute).params;
@@ -52,23 +64,29 @@ export class EditComponent implements OnInit {
 
     this.submitted = true;
 
-    this.productService
-      .update({
-        ...this.product,
-        name: this.editForm.value.name,
-        price: this.editForm.value.price,
-      } as IProduct)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => {
-        this.submitted = false;
-        this.alert.warning('Товар оновлено');
-      });
+    if (this.selectedFile.src) {
+      this.productService
+        .update({
+          ...this.product,
+          name: this.editForm.value.name,
+          price: this.editForm.value.price,
+          imageUrl: this.selectedFile.src,
+          description: this.editForm.value.description,
+        } as IProduct)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => {
+          this.submitted = false;
+          this.alert.warning('Товар оновлено');
+        });
+    }
   }
 
   private createEditForm(): void {
     this.editForm = new FormGroup<IEditForm>({
       name: new FormControl('', [Validators.required]),
       price: new FormControl(0, [Validators.required]),
+      description: new FormControl('', [Validators.required]),
+      imageUrl: new FormControl('', [Validators.required]),
     });
   }
 

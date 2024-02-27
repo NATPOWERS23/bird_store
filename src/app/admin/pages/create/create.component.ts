@@ -2,9 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  EventEmitter,
   OnInit,
-  Output,
   inject,
 } from '@angular/core';
 import {
@@ -22,22 +20,26 @@ import { AlertService } from '../../shared/services/alert.service';
 import { ICreateForm, ImageSnippet } from './types/icreate-form';
 import { IProduct } from '@shared/common_types/interfaces';
 import { MaterialModule } from '@core/material/material.module';
+import { FileUploaderService } from 'src/app/admin/shared/components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-create',
   standalone: true,
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  imports: [ReactiveFormsModule, MaterialModule, NgClass, NgIf, NgStyle],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    MaterialModule,
+    NgClass,
+    NgIf,
+    NgStyle,
+    FileUploaderService,
+  ],
 })
 export class CreateComponent implements OnInit {
-  @Output() public imageSnippetEventEmitter: EventEmitter<ImageSnippet> =
-    new EventEmitter<ImageSnippet>();
-  public selectedFile: ImageSnippet = { src: '' };
-  public selected = false;
+  public selectedFile: ImageSnippet | undefined;
   public createForm: FormGroup = new FormGroup({});
-
   private destroyRef = inject(DestroyRef);
   private formBuilder = inject(FormBuilder);
   private productService = inject(ProductsService);
@@ -55,7 +57,7 @@ export class CreateComponent implements OnInit {
     if (this.createForm.invalid) {
       return;
     }
-    if (this.selected) {
+    if (this.selectedFile?.src) {
       const product: IProduct = {
         ...this.createForm.value,
         id: this.createForm.value.name,
@@ -72,20 +74,6 @@ export class CreateComponent implements OnInit {
     } else {
       this.alert.danger('Будь ласка, додай фото товару');
     }
-  }
-
-  public processFile(imageInput: HTMLInputElement): void {
-    const file: File | undefined = imageInput?.files?.[0];
-    const reader = new FileReader();
-    reader.addEventListener('load', (el: ProgressEvent<FileReader>) => {
-      this.selectedFile = {
-        file: file,
-        src: el?.target?.result,
-      };
-      this.selected = true;
-      this.imageSnippetEventEmitter.emit(this.selectedFile);
-    });
-    if (file) reader.readAsDataURL(file);
   }
 
   private buildForm(): void {
