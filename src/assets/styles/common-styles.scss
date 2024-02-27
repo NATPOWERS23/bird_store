@@ -1,6 +1,6 @@
 /*file to style whole app*/
-@import "components/buttons";
-@import "helpers/variables";
+@import 'components/buttons';
+@import 'helpers/variables';
 
 .container {
   padding: 0 25px;
@@ -8,4 +8,28 @@
 
 .inner-shadow {
   box-shadow: $inner-shadow;
+}
+
+/*scrollbar stylesheet*/
+*::-webkit-scrollbar {
+  width: 10px !important;
+  background-color: $primary-color-bg !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 10px !important;
+  background-color: darken($color: $primary-color-bg, $amount: 5) !important;
+  border-radius: 10px !important;
+  box-shadow: $inner-shadow;
+}
+
+*::-webkit-scrollbar:horizontal {
+  width: 10px !important;
+  background-color: $primary-color-bg !important;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+  width: 10px !important;
+  background-color: $primary-color-bg !important;
+  border-radius: 10px;
 }
