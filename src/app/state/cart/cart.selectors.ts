@@ -1,6 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { IProduct, IProductGroup } from '@shared/common_types/interfaces';
 import { CartState } from './cart-state.interface';
+import {
+  IProduct,
+  IProductGroup,
+} from 'src/app/pages/products-page/types/product-interfaces';
 
 export const selectCountProducts = createSelector(
   createFeatureSelector('cartEntries'),

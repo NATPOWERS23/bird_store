@@ -18,9 +18,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsService } from '../../../pages/products-page/products.service';
 import { AlertService } from '../../shared/services/alert.service';
 import { ICreateForm, ImageSnippet } from './types/icreate-form';
-import { IProduct } from '@shared/common_types/interfaces';
 import { MaterialModule } from '@core/material/material.module';
 import { FileUploaderService } from 'src/app/admin/shared/components/file-uploader/file-uploader.component';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Component({
   selector: 'app-create',

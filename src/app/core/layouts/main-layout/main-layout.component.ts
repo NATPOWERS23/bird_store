@@ -3,12 +3,12 @@ import {
   ButtonSize,
   ButtonType,
   IconType,
-} from '@core/shared/components/button/button';
+} from '@core/components/button/button';
 import { MaterialModule } from '@core/material/material.module';
 import { NgIf, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ButtonComponent } from '@core/shared/components/button/button.component';
+import { ButtonComponent } from '@core/components/button/button.component';
 import { FilterService } from '@core/services/filter.service';
 
 @Component({

@@ -9,7 +9,7 @@ import {
   loadProductsSuccess,
 } from './products.actions';
 import { ProductsService } from '../../pages/products-page/products.service';
-import { IProduct } from '@shared/common_types/interfaces';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Injectable()
 export class ProductsEffects {

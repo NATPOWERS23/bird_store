@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProduct } from '@shared/common_types/interfaces';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Pipe({
   name: 'filterProducts',
@@ -19,7 +19,7 @@ export class FilterPipe implements PipeTransform {
     return products.filter(
       (item: IProduct) =>
         typeof item[key] === 'boolean' &&
-        item[key] === (filter as { [key: string]: boolean })[key]
+        item[key] === (filter as { [key: string]: boolean })[key as string]
     );
   }
 }

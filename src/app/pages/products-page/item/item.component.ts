@@ -11,17 +11,20 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { Store } from '@ngrx/store';
 
-import { IProduct, IProductGroup } from '@shared/common_types/interfaces';
-import { ButtonSize } from '@shared/components/button/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IItemForm } from '../types/item';
 import {
   addProduct,
   removeAllEntriesOfProduct,
 } from '../../../state/cart/cart.actions';
 import { MaterialModule } from '@core/material/material.module';
-import { ButtonComponent } from '@shared/components/button/button.component';
-import { ButtonCheckboxComponent } from '@shared/components/button-checkbox/button-checkbox.component';
+import { ButtonCheckboxComponent } from '@core/components/button-checkbox/button-checkbox.component';
+import { ButtonSize } from '@core/components/button/button';
+import { ButtonComponent } from '@core/components/button/button.component';
+import {
+  IProduct,
+  IProductGroup,
+  IItemForm,
+} from '../types/product-interfaces';
 
 @Component({
   selector: 'app-item',

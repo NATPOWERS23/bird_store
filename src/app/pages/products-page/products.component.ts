@@ -10,15 +10,15 @@ import { Store } from '@ngrx/store';
 import { selectGroupedCartEntries } from '../../state/cart/cart.selectors';
 import { selectAllProducts } from '../../state/products/products.selectors';
 import { loadProducts } from '../../state/products/products.actions';
-import { SearchInputComponent } from '@core/shared/components/search-input/search-input.component';
-import { IPageSizeParams } from '@core/shared/components/custom-slider/slider.interface';
-import { CustomSliderComponent } from '@core/shared/components/custom-slider/custom-slider.component';
-import { ItemComponent } from './item/item.component';
+import { SearchInputComponent } from '@core/components/search-input/search-input.component';
+import { IPageSizeParams } from '@core/components/custom-slider/slider.interface';
+import { CustomSliderComponent } from '@core/components/custom-slider/custom-slider.component';
 import { SearchPipe } from '../../core/pipes/search.pipe';
-import { IProduct, IProductGroup } from '@core/shared/common_types/interfaces';
 import { FilterPipe } from '@core/pipes/filter.pipe';
 import { FilterService } from '@core/services/filter.service';
 import { LoaderService } from '@core/services/loader.service';
+import { IProduct, IProductGroup } from './types/product-interfaces';
+import { ItemComponent } from './item/item.component';
 
 @Component({
   selector: 'app-products',
@@ -29,11 +29,11 @@ import { LoaderService } from '@core/services/loader.service';
     SearchInputComponent,
     CustomSliderComponent,
     NgxPaginationModule,
-    ItemComponent,
     CommonModule,
     FilterPipe,
     SearchPipe,
     MatInputModule,
+    ItemComponent,
   ],
 })
 export class ProductsComponent {

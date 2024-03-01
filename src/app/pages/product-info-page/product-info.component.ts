@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ButtonSize } from '@shared/components/button/button';
-import { ButtonComponent } from '@shared/components/button/button.component';
+import { ButtonSize } from '@core/components/button/button';
+import { ButtonComponent } from '@core/components/button/button.component';
 
 @Component({
   selector: 'app-product',

@@ -12,8 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
 import { AuthService } from '../../shared/services/auth.service';
-import { IUser } from '@shared/common_types/interfaces';
-import { ILoginForm } from './types/login';
+import { ILoginForm, IUser } from './login';
 
 @Component({
   selector: 'app-login',

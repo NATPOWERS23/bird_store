@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IProduct } from '@shared/common_types/interfaces';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Pipe({
   name: 'searchProducts',

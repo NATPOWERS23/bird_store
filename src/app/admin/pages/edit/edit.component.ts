@@ -17,7 +17,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { switchMap } from 'rxjs/operators';
 
-import { IProduct } from '@shared/common_types/interfaces';
 import { AlertService } from '../../shared/services/alert.service';
 import { ProductsService } from '../../../pages/products-page/products.service';
 import { IEditForm } from './edit-interfaces';
@@ -25,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ImageSnippet } from '../create/types/icreate-form';
 import { FileUploaderService } from '../../shared/components/file-uploader/file-uploader.component';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Component({
   selector: 'app-edit',

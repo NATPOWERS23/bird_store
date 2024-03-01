@@ -4,10 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, map } from 'rxjs';
-import { PageTitleComponent } from '@shared/components/page-title/page-title.component';
-import { ButtonComponent } from '@shared/components/button/button.component';
-import { ButtonSize } from '@shared/components/button/button';
 import { BUTTONS_SETTINGS, PAGE_SETTINGS } from './info-config';
+import { ButtonSize } from '@core/components/button/button';
+import { ButtonComponent } from '@core/components/button/button.component';
+import { PageTitleComponent } from '@core/components/page-title/page-title.component';
 
 @Component({
   selector: 'app-info',

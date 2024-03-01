@@ -1,9 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { IProduct } from '@shared/common_types/interfaces';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
-export const loadProducts = createAction(
-  '[Products] Load Products'
-);
+export const loadProducts = createAction('[Products] Load Products');
 
 export const loadProductsSuccess = createAction(
   '[Products] Load Products Success',

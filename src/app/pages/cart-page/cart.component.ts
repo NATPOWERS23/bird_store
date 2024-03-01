@@ -25,11 +25,13 @@ import {
   removeAllEntriesOfProduct,
   removeProduct,
 } from '../../state/cart/cart.actions';
-
-import { DialogComponent } from '@shared/components/modals/dialog.component';
-import { ButtonSize } from '@shared/components/button/button';
-import { ButtonComponent } from '@shared/components/button/button.component';
-import { IProductGroup, IProduct } from '@shared/common_types/interfaces';
+import { ButtonSize } from '@core/components/button/button';
+import { ButtonComponent } from '@core/components/button/button.component';
+import { DialogComponent } from '@core/components/modals/dialog.component';
+import {
+  IProductGroup,
+  IProduct,
+} from '../products-page/types/product-interfaces';
 
 @Component({
   selector: 'app-cart',

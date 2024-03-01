@@ -14,8 +14,8 @@ import { BehaviorSubject } from 'rxjs';
 
 import { ProductsService } from '../../../pages/products-page/products.service';
 import { AlertService } from '../../shared/services/alert.service';
-import { IProduct } from '@shared/common_types/interfaces';
 import { SearchPipe } from '@core/pipes/search.pipe';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 @Component({
   selector: 'app-dashboard',

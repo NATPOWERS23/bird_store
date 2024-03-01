@@ -4,12 +4,12 @@ import { AsyncPipe } from '@angular/common';
 
 import { Store } from '@ngrx/store';
 
-import { ButtonSize } from '@shared/components/button/button';
 import { MaterialModule } from '@core/material/material.module';
-import { ButtonComponent } from '@shared/components/button/button.component';
-import { PageTitleComponent } from '@shared/components/page-title/page-title.component';
 import { PaypalComponent } from './paypal/paypal.component';
 import { selectTotalPrice } from 'src/app/state/cart/cart.selectors';
+import { ButtonSize } from '@core/components/button/button';
+import { ButtonComponent } from '@core/components/button/button.component';
+import { PageTitleComponent } from '@core/components/page-title/page-title.component';
 
 @Component({
   selector: 'app-payment-page',

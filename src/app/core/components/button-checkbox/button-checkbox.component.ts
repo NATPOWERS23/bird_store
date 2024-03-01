@@ -4,9 +4,9 @@ import {
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { ButtonSize } from '@core/shared/components/button/button';
+import { ButtonSize } from '@core/components/button/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ButtonComponent } from '@core/shared/components/button/button.component';
+import { ButtonComponent } from '@core/components/button/button.component';
 
 @Component({
   standalone: true,

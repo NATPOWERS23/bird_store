@@ -1,4 +1,4 @@
-import { IProduct } from '@shared/common_types/interfaces';
+import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
 export interface CartState {
   items: IProduct[];

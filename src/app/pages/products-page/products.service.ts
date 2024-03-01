@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
-import { IProduct } from '@shared/common_types/interfaces';
-import { FbCreateResponse } from './types/product-service';
+import { IProduct, FbCreateResponse } from './types/product-interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {

@@ -1,8 +1,4 @@
-export interface IUser {
-  email: string;
-  password: string;
-  returnSecureToken?: boolean;
-}
+import { FormControl } from '@angular/forms';
 
 export interface IProduct {
   id: string;
@@ -17,4 +13,14 @@ export interface IProduct {
 export interface IProductGroup {
   product: IProduct;
   count: number;
+}
+
+export interface IItemForm {
+  quantity: FormControl<number>;
+  checkedCart: FormControl<boolean>;
+}
+
+export interface FbCreateResponse {
+  id: string;
+  name: string;
 }
