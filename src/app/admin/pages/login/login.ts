@@ -10,3 +10,12 @@ export interface IUser {
   password: string;
   returnSecureToken?: boolean;
 }
+
+export interface FbAuthResponse {
+  email: string;
+  displayName: string;
+  idToken: string;
+  registered: boolean;
+  refreshToken: string;
+  expiresIn: string;
+}

@@ -10,6 +10,7 @@ import {
 } from './products.actions';
 import { ProductsService } from '../../pages/products-page/products.service';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class ProductsEffects {
@@ -26,7 +27,9 @@ export class ProductsEffects {
           map((products: IProduct[]) =>
             loadProductsSuccess({ products: products })
           ),
-          catchError((error: Error) => of(loadProductsFailure({ error })))
+          catchError((error: HttpErrorResponse) =>
+            of(loadProductsFailure({ error }))
+          )
         )
       )
     )

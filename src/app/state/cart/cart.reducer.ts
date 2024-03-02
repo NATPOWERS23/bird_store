@@ -8,6 +8,7 @@ export const cartFeatureKey = 'cart';
 export const initialCartState: CartState = {
   items: [],
   status: '',
+  error: null,
 };
 
 export const cartReducer = createReducer(
@@ -67,7 +68,7 @@ export const cartReducer = createReducer(
   on(CartActions.loadCartFailure, (state: CartState, error) => {
     return {
       ...state,
-      error: error,
+      error: error.error,
       status: 'error',
     };
   })

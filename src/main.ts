@@ -21,12 +21,18 @@ import { ProductsEffects } from './app/state/products/products.effects';
 import { metaReducerCartLocalStorage } from './app/state/cart/cart-metareducer';
 import { authInterceptor } from '@core/interceptors/auth.interceptor';
 import { LoadingInterceptor } from '@core/interceptors/loading.interceptor';
+import * as LoginEffects from './app/state/admin/login/login.effects';
+import {
+  authFeatureKey,
+  authReducer,
+} from './app/state/admin/login/login.reducer';
 
 export const ENV = new InjectionToken('environment');
 
 const ROOT_REDUCERS = {
   cartEntries: cartReducer,
   productsEntries: productsReducer,
+  [authFeatureKey]: authReducer,
 };
 
 bootstrapApplication(AppComponent, {
@@ -36,13 +42,17 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(BrowserAnimationsModule),
     provideAnimations(),
     provideNoopAnimations(),
-    provideEffects([ProductsEffects]),
-    provideStoreDevtools({
-      logOnly: environment.production,
-    }),
     { provide: ENV, useValue: environment },
     provideStore(ROOT_REDUCERS, {
       metaReducers: [metaReducerCartLocalStorage],
+    }),
+    provideEffects([LoginEffects, ProductsEffects]),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: environment.production,
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
     }),
   ],
 }).catch(error => console.log(error));

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 
@@ -10,5 +11,5 @@ export const loadProductsSuccess = createAction(
 
 export const loadProductsFailure = createAction(
   '[Products] Load Products Failure',
-  props<{ error: Error }>()
+  props<{ error: HttpErrorResponse }>()
 );

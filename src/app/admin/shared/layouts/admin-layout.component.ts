@@ -5,7 +5,7 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../pages/login/auth.service';
 import { AlertComponent } from '../components/alert/alert.component';
 import { NgIf } from '@angular/common';
 

@@ -1,10 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import * as ProductsAction from '../products/products.actions';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { ProductState } from './products-state.interface';
 
 export const productsFeatureKey = 'products';
 
-export const initialProductsState: IProduct[] = [];
+export const initialProductsState: ProductState = {
+  products: [],
+  status: '',
+  error: null,
+};
 
 export const productsReducer = createReducer(
   initialProductsState,
@@ -12,7 +17,7 @@ export const productsReducer = createReducer(
     return { ...state, status: 'loading' };
   }),
 
-  on(ProductsAction.loadProductsSuccess, (state, products) => {
+  on(ProductsAction.loadProductsSuccess, (state: ProductState, products) => {
     return {
       ...state,
       products: products.products,
@@ -21,10 +26,10 @@ export const productsReducer = createReducer(
     };
   }),
 
-  on(ProductsAction.loadProductsFailure, (state, error) => {
+  on(ProductsAction.loadProductsFailure, (state: ProductState, error) => {
     return {
       ...state,
-      error: error,
+      error: error.error,
       status: 'error',
     };
   })

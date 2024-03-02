@@ -9,23 +9,32 @@ import {
 } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
-import { AuthService } from '../../shared/services/auth.service';
 import { ILoginForm, IUser } from './login';
+import { Store } from '@ngrx/store';
+import { authActions } from 'src/app/state/admin/login/auth.actions';
+import {
+  selectErrValidation,
+  selectStatus,
+  selectUser,
+} from 'src/app/state/admin/login/login.reducer';
+import { HandleErrorsPipe } from '@core/pipes/handle-errors.pipe';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, HandleErrorsPipe],
 })
 export class LoginComponent implements OnInit {
   public form!: FormGroup<ILoginForm>;
-  public submitted = false;
   public message = '';
-  public auth = inject(AuthService);
+
+  public store = inject(Store);
+  public status$ = this.store.select(selectStatus);
+  public errors$ = this.store.select(selectErrValidation);
 
   private router = inject(Router);
   private route$ = inject(ActivatedRoute).queryParams;
@@ -34,6 +43,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.getRouteState();
     this.createLoginForm();
+    this.navigateOnSuccessLogin();
   }
 
   public submit(): void {
@@ -41,24 +51,12 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.submitted = true;
-
     const user: IUser = {
       email: this.form.value.email,
       password: this.form.value.password,
     } as IUser;
 
-    this.auth
-      .login(user)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(
-        () => {
-          this.form.reset();
-          this.router.navigate(['/admin', 'dashboard']);
-          this.submitted = false;
-        },
-        () => (this.submitted = false)
-      );
+    this.store.dispatch(authActions.loginUser({ user }));
   }
 
   private getRouteState(): void {
@@ -87,5 +85,18 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6),
       ]),
     });
+  }
+
+  private navigateOnSuccessLogin(): void {
+    this.status$
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(status => {
+          if (status === 'success') {
+            this.router.navigate(['/admin', 'dashboard']);
+          }
+        })
+      )
+      .subscribe();
   }
 }

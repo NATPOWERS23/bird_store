@@ -1,9 +1,11 @@
 import { inject } from '@angular/core';
-import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { AuthService } from '../../admin/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { AuthService } from 'src/app/admin/pages/login/auth.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const auth = inject(AuthService);
