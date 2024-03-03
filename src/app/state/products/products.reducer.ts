@@ -1,9 +1,6 @@
-import { createReducer, on } from '@ngrx/store';
-import * as ProductsAction from '../products/products.actions';
-import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { createFeature, createReducer, on } from '@ngrx/store';
 import { ProductState } from './products-state.interface';
-
-export const productsFeatureKey = 'products';
+import { productsActions } from './products.actions';
 
 export const initialProductsState: ProductState = {
   products: [],
@@ -11,26 +8,55 @@ export const initialProductsState: ProductState = {
   error: null,
 };
 
-export const productsReducer = createReducer(
-  initialProductsState,
-  on(ProductsAction.loadProducts, state => {
-    return { ...state, status: 'loading' };
-  }),
-
-  on(ProductsAction.loadProductsSuccess, (state: ProductState, products) => {
-    return {
+export const productsFeature = createFeature({
+  name: 'products',
+  reducer: createReducer(
+    initialProductsState,
+    on(productsActions.loadProducts, state => ({
       ...state,
-      products: products.products,
       error: null,
-      status: 'success',
-    };
-  }),
+      status: 'loading',
+    })),
 
-  on(ProductsAction.loadProductsFailure, (state: ProductState, error) => {
-    return {
+    on(
+      productsActions.loadProductsSuccess,
+      (state: ProductState, products) => ({
+        ...state,
+        products: products.products,
+        error: null,
+        status: 'success',
+      })
+    ),
+
+    on(productsActions.loadProductsFailure, (state: ProductState, error) => ({
       ...state,
       error: error.error,
       status: 'error',
-    };
-  })
-);
+    })),
+
+    on(productsActions.deleteProduct, (state: ProductState) => ({
+      ...state,
+      error: null,
+      status: 'loading',
+    })),
+
+    on(productsActions.deleteProductSuccess, (state: ProductState, action) => ({
+      ...state,
+      products: state.products.filter(item => item.id !== action.id),
+      error: null,
+      status: 'success',
+    })),
+
+    on(productsActions.deleteProductFailure, (state: ProductState, error) => ({
+      ...state,
+      error: error.error,
+      status: 'error',
+    }))
+  ),
+});
+
+export const {
+  name: productsFeatureKey,
+  reducer: productsReducer,
+  selectError,
+} = productsFeature;

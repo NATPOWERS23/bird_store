@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store';
 
 import { selectGroupedCartEntries } from '../../state/cart/cart.selectors';
 import { selectAllProducts } from '../../state/products/products.selectors';
-import { loadProducts } from '../../state/products/products.actions';
 import { SearchInputComponent } from '@core/components/search-input/search-input.component';
 import { IPageSizeParams } from '@core/components/custom-slider/slider.interface';
 import { CustomSliderComponent } from '@core/components/custom-slider/custom-slider.component';
@@ -19,6 +18,7 @@ import { FilterService } from '@core/services/filter.service';
 import { LoaderService } from '@core/services/loader.service';
 import { IProduct, IProductGroup } from './types/product-interfaces';
 import { ItemComponent } from './item/item.component';
+import { productsActions } from 'src/app/state/products/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -52,7 +52,7 @@ export class ProductsComponent {
   private filterService = inject(FilterService);
 
   constructor() {
-    this.store.dispatch(loadProducts());
+    this.store.dispatch(productsActions.loadProducts());
     this.products$ = this.store.select(selectAllProducts);
     this.cartEntries$ = this.store.select(selectGroupedCartEntries);
     this.filterService.getFilterValue().subscribe(filter => {

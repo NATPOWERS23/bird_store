@@ -4,8 +4,6 @@ import { authActions } from './auth.actions';
 import { FbAuthResponse, IUser } from 'src/app/admin/pages/login/login';
 import { TypedAction } from '@ngrx/store/src/models';
 
-export const loginFeatureKey = 'login';
-
 export const initialUserState: UserState = {
   user: undefined,
   errValidation: null,

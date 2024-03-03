@@ -17,11 +17,11 @@ import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
 import { cartReducer } from './app/state/cart/cart.reducer';
 import { productsReducer } from './app/state/products/products.reducer';
-import { ProductsEffects } from './app/state/products/products.effects';
 import { metaReducerCartLocalStorage } from './app/state/cart/cart-metareducer';
 import { authInterceptor } from '@core/interceptors/auth.interceptor';
 import { LoadingInterceptor } from '@core/interceptors/loading.interceptor';
 import * as LoginEffects from './app/state/admin/login/login.effects';
+import * as ProductsEffects from './app/state/products/products.effects';
 import {
   authFeatureKey,
   authReducer,
