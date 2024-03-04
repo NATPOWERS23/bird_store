@@ -2,7 +2,7 @@ import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from './alert.service';
 
 @Component({
   selector: 'app-alert',

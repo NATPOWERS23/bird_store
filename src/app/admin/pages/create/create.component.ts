@@ -16,7 +16,7 @@ import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProductsService } from '../../../pages/products-page/products.service';
-import { AlertService } from '../../shared/services/alert.service';
+import { AlertService } from '../../shared/components/alert/alert.service';
 import { ICreateForm, ImageSnippet } from './types/icreate-form';
 import { MaterialModule } from '@core/material/material.module';
 import { FileUploaderService } from 'src/app/admin/shared/components/file-uploader/file-uploader.component';

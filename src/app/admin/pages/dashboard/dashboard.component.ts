@@ -16,7 +16,7 @@ import { SearchPipe } from '@core/pipes/search.pipe';
 import { selectAllProducts } from 'src/app/state/products/products.selectors';
 import { productsActions } from 'src/app/state/products/products.actions';
 import { selectError } from 'src/app/state/products/products.reducer';
-import { AlertService } from '../../shared/services/alert.service';
+import { AlertService } from '../../shared/components/alert/alert.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -17,7 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { switchMap } from 'rxjs/operators';
 
-import { AlertService } from '../../shared/services/alert.service';
+import { AlertService } from '../../shared/components/alert/alert.service';
 import { ProductsService } from '../../../pages/products-page/products.service';
 import { IEditForm } from './edit-interfaces';
 import { MatFormFieldModule } from '@angular/material/form-field';

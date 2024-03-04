@@ -8,10 +8,8 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { Router, RouterLink } from '@angular/router';
-
-import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import {
@@ -43,11 +41,10 @@ import {
 })
 export class CartComponent implements OnInit {
   public store = inject(Store);
-  public cartEntries$: Observable<IProductGroup[]> = this.store.select(
-    selectGroupedCartEntries
-  );
+
+  public cartEntries = toSignal(this.store.select(selectGroupedCartEntries));
+  public countCart = toSignal(this.store.select(selectTotalPrice));
   public ButtonSize: typeof ButtonSize = ButtonSize;
-  public countCart$ = this.store.select(selectTotalPrice);
 
   private destroyRef = inject(DestroyRef);
   private dialog = inject(MatDialog);
@@ -74,12 +71,11 @@ export class CartComponent implements OnInit {
   }
 
   public openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
-      data: { title: 'Make an Order' },
-    });
-
-    dialogRef
+    this.dialog
+      .open(DialogComponent, {
+        width: '250px',
+        data: { title: 'Make an Order' },
+      })
       .afterClosed()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();

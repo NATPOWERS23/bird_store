@@ -32,5 +32,3 @@ export class DialogsService {
     );
   }
 }
-
-/*https://betterprogramming.pub/create-a-modal-for-your-angular-app-without-libs-671bd7280867*/

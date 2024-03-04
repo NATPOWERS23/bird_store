@@ -5,7 +5,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { CreateComponent } from './pages/create/create.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { Route } from '@angular/router';
-import { AlertService } from './shared/services/alert.service';
+import { AlertService } from './shared/components/alert/alert.service';
 
 export default [
   {

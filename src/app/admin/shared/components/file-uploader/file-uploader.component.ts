@@ -1,5 +1,5 @@
 import { AsyncPipe, NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, signal } from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -8,9 +8,6 @@ import {
   ValidationErrors,
   Validator,
 } from '@angular/forms';
-
-import { BehaviorSubject } from 'rxjs';
-
 import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
 
 @Component({
@@ -36,7 +33,7 @@ import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
 export class FileUploaderService implements ControlValueAccessor, Validator {
   public selectedFile: ImageSnippet = { src: '' };
   public disabled = false;
-  public loading$ = new BehaviorSubject(false);
+  public loading = signal(false);
 
   onChange = (value: ImageSnippet) => {};
   onTouched = () => {};
@@ -56,7 +53,7 @@ export class FileUploaderService implements ControlValueAccessor, Validator {
   processFile(imageInput: HTMLInputElement): void {
     const file: File | undefined = imageInput?.files?.[0];
     const reader = new FileReader();
-    this.loading$.next(true);
+    this.loading.set(true);
 
     reader.addEventListener('load', (el: ProgressEvent<FileReader>) => {
       this.selectedFile = {
@@ -64,10 +61,10 @@ export class FileUploaderService implements ControlValueAccessor, Validator {
         src: el?.target?.result,
       };
       this.onChange(this.selectedFile);
-      this.loading$.next(false);
+      this.loading.set(false);
     });
 
-    file ? reader.readAsDataURL(file) : this.loading$.next(false);
+    file ? reader.readAsDataURL(file) : this.loading.set(false);
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
