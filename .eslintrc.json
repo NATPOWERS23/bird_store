@@ -63,7 +63,8 @@
             ],
             "allowSeparatedGroups": false
           }
-        ]
+        ],
+        "linebreak-style": ["error", "unix"]
       }
     },
     {

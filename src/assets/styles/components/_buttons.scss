@@ -1,5 +1,5 @@
-@import "../helpers/mixins";
-@import "../helpers/variables";
+@import '../helpers/mixins';
+@import '../helpers/variables';
 
 .btn {
   border: none;
@@ -15,7 +15,8 @@
   justify-content: center;
   @include font-numb;
   color: $primary-text-color;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: none;
     background-color: $hover-color-bg;
     color: $hover-text-color;

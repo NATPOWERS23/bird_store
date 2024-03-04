@@ -1,6 +1,6 @@
-@import "../../../assets/styles/helpers/mixins";
-@import "../../../assets/styles/helpers/variables";
-@import "../../../assets/styles/components/buttons";
+@import '../../../assets/styles/helpers/mixins';
+@import '../../../assets/styles/helpers/variables';
+@import '../../../assets/styles/components/buttons';
 
 .custom_button {
   width: 100%;
@@ -19,7 +19,7 @@ mat-card {
   @include font-menu;
 }
 
-mat-card:not([class*="mat-elevation-z"]) {
+mat-card:not([class*='mat-elevation-z']) {
   box-shadow: $inner-shadow;
 }
 
