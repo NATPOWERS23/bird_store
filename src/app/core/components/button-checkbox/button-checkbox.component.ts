@@ -46,11 +46,11 @@ export class ButtonCheckboxComponent implements ControlValueAccessor {
     this.value = value;
   }
 
-  registerOnChange(onChange: any) {
+  registerOnChange(onChange: (value: boolean) => void) {
     this.onChange = onChange;
   }
 
-  registerOnTouched(onTouched: any) {
+  registerOnTouched(onTouched: () => void) {
     this.onTouched = onTouched;
   }
 

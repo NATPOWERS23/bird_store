@@ -1,8 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { UserState } from './user-state.interface';
 import { authActions } from './auth.actions';
-import { FbAuthResponse, IUser } from 'src/app/admin/pages/login/login';
-import { TypedAction } from '@ngrx/store/src/models';
 
 export const initialUserState: UserState = {
   user: undefined,

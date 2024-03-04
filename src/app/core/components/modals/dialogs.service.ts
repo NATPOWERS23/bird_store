@@ -12,7 +12,12 @@ export class DialogsService {
 
   protected dialogRef!: MatDialogRef<DialogComponent>;
 
-  public open(options: any): void {
+  public open(options: {
+    title: string;
+    message: string;
+    cancelText?: string;
+    confirmText?: string;
+  }): void {
     this.dialogRef = this.dialog.open(DialogComponent, {
       data: {
         title: options.title,
@@ -23,7 +28,7 @@ export class DialogsService {
     });
   }
 
-  public confirmed(): Observable<any> {
+  public confirmed(): Observable<unknown> {
     return this.dialogRef.afterClosed().pipe(
       take(1),
       map(res => {

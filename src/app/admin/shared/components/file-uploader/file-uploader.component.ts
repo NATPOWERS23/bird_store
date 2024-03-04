@@ -19,18 +19,18 @@ import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FileUploaderService),
+      useExisting: forwardRef(() => FileUploaderComponent),
       multi: true,
     },
 
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => FileUploaderService),
+      useExisting: forwardRef(() => FileUploaderComponent),
       multi: true,
     },
   ],
 })
-export class FileUploaderService implements ControlValueAccessor, Validator {
+export class FileUploaderComponent implements ControlValueAccessor, Validator {
   public selectedFile: ImageSnippet = { src: '' };
   public disabled = false;
   public loading = signal(false);

@@ -10,10 +10,11 @@ import {
   inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ButtonSize } from '@core/components/button/button';
-import { ButtonComponent } from '@core/components/button/button.component';
 
 import { Observable, tap } from 'rxjs';
+
+import { ButtonComponent } from '@core/components/button/button.component';
+import { ButtonSize } from '@core/components/button/button';
 
 declare var paypal: any;
 

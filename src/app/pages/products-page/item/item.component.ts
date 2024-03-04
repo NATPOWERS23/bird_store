@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CurrencyPipe, NgClass, NgIf, NgStyle } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -21,9 +15,9 @@ import { ButtonCheckboxComponent } from '@core/components/button-checkbox/button
 import { ButtonSize } from '@core/components/button/button';
 import { ButtonComponent } from '@core/components/button/button.component';
 import {
+  IItemForm,
   IProduct,
   IProductGroup,
-  IItemForm,
 } from '../types/product-interfaces';
 
 @Component({

@@ -17,7 +17,6 @@ import { authActions } from 'src/app/state/admin/login/auth.actions';
 import {
   selectErrValidation,
   selectStatus,
-  selectUser,
 } from 'src/app/state/admin/login/login.reducer';
 import { HandleErrorsPipe } from '@core/pipes/handle-errors.pipe';
 

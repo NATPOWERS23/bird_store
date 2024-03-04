@@ -1,4 +1,4 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
 import { FbAuthResponse, IUser } from 'src/app/admin/pages/login/login';
 import { HttpErrorResponse } from '@angular/common/http';
 

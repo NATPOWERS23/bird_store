@@ -22,9 +22,8 @@ import { ProductsService } from '../../../pages/products-page/products.service';
 import { IEditForm } from './edit-interfaces';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ImageSnippet } from '../create/types/icreate-form';
-import { FileUploaderService } from '../../shared/components/file-uploader/file-uploader.component';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { FileUploaderComponent } from '../../shared/components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-edit',
@@ -38,7 +37,7 @@ import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
     NgIf,
     MatFormFieldModule,
     MatInputModule,
-    FileUploaderService,
+    FileUploaderComponent,
   ],
 })
 export class EditComponent implements OnInit {

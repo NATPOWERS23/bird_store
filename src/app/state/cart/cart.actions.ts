@@ -1,5 +1,4 @@
 import { createAction, props } from '@ngrx/store';
-import { CartState } from './cart-state.interface';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 

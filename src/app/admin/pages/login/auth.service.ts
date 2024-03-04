@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 import { fbAuthResponse } from './auth-service';
-import { IUser } from './login';
+import { FbAuthResponse, IUser } from './login';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,9 +19,9 @@ export class AuthService {
     return <string>localStorage.getItem('fb-token');
   }
 
-  public login(user: IUser): Observable<any> {
+  public login(user: IUser): Observable<FbAuthResponse> {
     return this.http
-      .post(
+      .post<FbAuthResponse>(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
         { ...user, returnSecureToken: true }
       )

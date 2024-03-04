@@ -27,8 +27,8 @@ import { ButtonSize } from '@core/components/button/button';
 import { ButtonComponent } from '@core/components/button/button.component';
 import { DialogComponent } from '@core/components/modals/dialog.component';
 import {
-  IProductGroup,
   IProduct,
+  IProductGroup,
 } from '../products-page/types/product-interfaces';
 
 @Component({

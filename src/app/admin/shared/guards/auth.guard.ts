@@ -9,7 +9,12 @@ export class AuthGuard {
   private auth = inject(AuthService);
   private router = inject(Router);
 
-  public canActivate(): Observable<boolean> | Promise<boolean> | boolean | any {
+  public canActivate():
+    | Observable<boolean>
+    | Promise<boolean>
+    | boolean
+    | undefined
+    | void {
     if (this.auth.isAuthenticated()) {
       return true;
     } else {

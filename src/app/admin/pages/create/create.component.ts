@@ -17,10 +17,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProductsService } from '../../../pages/products-page/products.service';
 import { AlertService } from '../../shared/components/alert/alert.service';
-import { ICreateForm, ImageSnippet } from './types/icreate-form';
+import { ICreateForm } from './types/icreate-form';
 import { MaterialModule } from '@core/material/material.module';
-import { FileUploaderService } from 'src/app/admin/shared/components/file-uploader/file-uploader.component';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { FileUploaderComponent } from '../../shared/components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-create',
@@ -34,7 +34,7 @@ import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
     NgClass,
     NgIf,
     NgStyle,
-    FileUploaderService,
+    FileUploaderComponent,
   ],
 })
 export class CreateComponent implements OnInit {
