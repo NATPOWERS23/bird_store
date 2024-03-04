@@ -1,5 +1,16 @@
-import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AsyncPipe, NgClass, NgIf, NgStyle } from '@angular/common';
+import { Component, forwardRef } from '@angular/core';
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
+} from '@angular/forms';
+
+import { BehaviorSubject } from 'rxjs';
+
 import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
 
 @Component({
@@ -7,28 +18,62 @@ import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
   standalone: true,
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.scss'],
-  imports: [NgClass, NgIf, NgStyle],
-})
-export class FileUploaderService {
-  @Input() public selectedFile: ImageSnippet = { src: '' };
-  @Output() public imageSnippetEventEmitter: EventEmitter<ImageSnippet> =
-    new EventEmitter<ImageSnippet>();
+  imports: [NgClass, NgIf, NgStyle, AsyncPipe],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FileUploaderService),
+      multi: true,
+    },
 
-  public processFile(imageInput: HTMLInputElement): void {
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => FileUploaderService),
+      multi: true,
+    },
+  ],
+})
+export class FileUploaderService implements ControlValueAccessor, Validator {
+  public selectedFile: ImageSnippet = { src: '' };
+  public disabled = false;
+  public loading$ = new BehaviorSubject(false);
+
+  onChange = (value: ImageSnippet) => {};
+  onTouched = () => {};
+  writeValue(obj: ImageSnippet): void {
+    this.selectedFile = obj;
+  }
+  registerOnChange(fn: (value: ImageSnippet) => void): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  processFile(imageInput: HTMLInputElement): void {
     const file: File | undefined = imageInput?.files?.[0];
     const reader = new FileReader();
+    this.loading$.next(true);
+
     reader.addEventListener('load', (el: ProgressEvent<FileReader>) => {
       this.selectedFile = {
         file: file,
         src: el?.target?.result,
       };
-      this.imageSnippetEventEmitter.emit(this.selectedFile);
+      this.onChange(this.selectedFile);
+      this.loading$.next(false);
     });
-    if (file) reader.readAsDataURL(file);
+
+    file ? reader.readAsDataURL(file) : this.loading$.next(false);
   }
 
-  public clearImage(): void {
-    this.selectedFile = { src: '' };
-    this.imageSnippetEventEmitter.emit(this.selectedFile);
+  validate(control: AbstractControl): ValidationErrors | null {
+    if (!control.value?.src || control.value?.src === '') {
+      return { required: true };
+    }
+    return null;
   }
 }

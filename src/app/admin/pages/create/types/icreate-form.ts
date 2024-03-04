@@ -4,7 +4,9 @@ export interface ICreateForm {
   name: Array<null | string | ValidatorFn>;
   price: Array<null | number | ValidatorFn>;
   description: Array<null | string | ValidatorFn>;
-  imageUrl: Array<null | string>;
+  imageUrl: Array<
+    ImageSnippet | { nonNullable: true; validators: ValidatorFn }
+  >;
 }
 
 export interface ImageSnippet {

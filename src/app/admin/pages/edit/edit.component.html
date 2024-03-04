@@ -76,17 +76,16 @@
       </mat-form-field>
     </div>
 
-    <div *ngIf="!!product" class="col-11 col-sm-5 mt-3 mt-sm-0">
-      <app-file-uploader
-        [selectedFile]="{ src: product.imageUrl || '' }"
-        (imageSnippetEventEmitter)="selectedFile = $event"></app-file-uploader>
+    <div class="col-11 col-sm-5 mt-3 mt-sm-0">
+      <app-file-uploader formControlName="imageUrl"></app-file-uploader>
     </div>
+
     <button
       class="btn btn-secondary text-primary mt-3"
       mat-raised-button
       color="primary"
       type="submit"
-      [disabled]="editForm.invalid || submitted">
+      [disabled]="editForm.invalid || !editForm.touched">
       Оновити
     </button>
   </form>

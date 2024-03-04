@@ -76,12 +76,12 @@
 
     <app-file-uploader
       class="col-11 col-sm-5 mt-3 mt-sm-0"
-      (imageSnippetEventEmitter)="selectedFile = $event"></app-file-uploader>
+      formControlName="imageUrl"></app-file-uploader>
   </div>
 
   <button
     type="submit"
-    class="btn btn-block btn-dark mt-5 mb-3 w-70"
+    class="btn btn-block btn-dark mt-3 mb-3 w-70"
     [disabled]="createForm.invalid">
     Створити товар
   </button>

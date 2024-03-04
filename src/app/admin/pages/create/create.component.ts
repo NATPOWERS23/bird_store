@@ -38,7 +38,6 @@ import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
   ],
 })
 export class CreateComponent implements OnInit {
-  public selectedFile: ImageSnippet | undefined;
   public createForm: FormGroup = new FormGroup({});
   private destroyRef = inject(DestroyRef);
   private formBuilder = inject(FormBuilder);
@@ -57,23 +56,20 @@ export class CreateComponent implements OnInit {
     if (this.createForm.invalid) {
       return;
     }
-    if (this.selectedFile?.src) {
-      const product: IProduct = {
-        ...this.createForm.value,
-        id: this.createForm.value.name,
-        imageUrl: this.selectedFile.src,
-      };
-      this.productService
-        .create(product)
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe(() => {
-          this.createForm.reset();
-          this.createForm.markAsUntouched();
-          this.alert.success('Товар успішно створений');
-        });
-    } else {
-      this.alert.danger('Будь ласка, додай фото товару');
-    }
+
+    const product: IProduct = {
+      ...this.createForm.value,
+      id: this.createForm.value.name,
+      imageUrl: this.createForm.value.imageUrl?.src,
+    };
+    this.productService
+      .create(product)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.createForm.reset();
+        this.createForm.markAsUntouched();
+        this.alert.success('Товар успішно створений');
+      });
   }
 
   private buildForm(): void {
@@ -81,7 +77,10 @@ export class CreateComponent implements OnInit {
       name: ['', Validators.required],
       price: [0, Validators.required],
       description: ['', Validators.required],
-      imageUrl: [''],
+      imageUrl: [
+        { src: '' },
+        { nonNullable: true, validators: Validators.required },
+      ],
     });
   }
 }
