@@ -16,7 +16,7 @@ import { Observable, tap } from 'rxjs';
 import { ButtonComponent } from '@core/components/button/button.component';
 import { ButtonSize } from '@core/components/button/button';
 
-declare var paypal: any;
+declare let paypal: any;
 
 @Component({
   selector: 'app-paypal',
