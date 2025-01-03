@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private router = inject(Router);
-
   constructor(private http: HttpClient) {}
 
   get token(): string | null {

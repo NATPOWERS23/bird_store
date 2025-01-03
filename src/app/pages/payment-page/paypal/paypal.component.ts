@@ -13,7 +13,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { Observable, tap } from 'rxjs';
 
-import { ButtonComponent } from '@core/components/button/button.component';
 import { ButtonSize } from '@core/components/button/button';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
