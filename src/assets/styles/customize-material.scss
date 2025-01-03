@@ -6,4 +6,10 @@
   .mdc-text-field__input {
     height: 35px !important;
   }
+  .mat-mdc-card.mdc-card {
+    box-shadow: none;
+  }
+  .mat-mdc-slider .mat-ripple .mat-mdc-slider-focus-ripple, .mat-mdc-slider .mat-ripple .mat-mdc-slider-active-ripple {
+    background-color: transparent !important;
+  }
 }
