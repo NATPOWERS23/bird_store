@@ -6,15 +6,15 @@
 @include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes
-$NewProject-primary: mat.define-palette(mat.$indigo-palette);
-$NewProject-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-$NewProject-warn: mat.define-palette(mat.$red-palette);
+$NewProject-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$NewProject-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+$NewProject-warn: mat.m2-define-palette(mat.$m2-red-palette);
 
 // Define typography config
-$typography-config: mat.define-typography-config();
+$typography-config: mat.m2-define-typography-config();
 
 // Create the theme object
-$NewProject-theme: mat.define-light-theme((
+$NewProject-theme: mat.m2-define-light-theme((
   color: (
     primary: $NewProject-primary,
     accent: $NewProject-accent,
