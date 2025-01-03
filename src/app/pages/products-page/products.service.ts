@@ -23,10 +23,10 @@ export class ProductsService {
 
   public getAll(): Observable<IProduct[]> {
     return this.http
-      .get<IProduct[]>(`${environment.fbDbUrl}/products.json`)
+      .get<{ [key: string]: IProduct }>(`${environment.fbDbUrl}/products.json`)
       .pipe(
-        map((response: { [key: string]: any }) => {
-          return Object.keys(response).map(key => ({
+        map((response: { [key: string]: IProduct }) => {
+          return Object.keys(response).map((key: string) => ({
             ...response[key],
             id: key,
             name: response[key].name,

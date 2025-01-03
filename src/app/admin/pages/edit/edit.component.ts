@@ -11,7 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -19,11 +19,12 @@ import { switchMap } from 'rxjs/operators';
 
 import { AlertService } from '../../shared/components/alert/alert.service';
 import { ProductsService } from '../../../pages/products-page/products.service';
-import { IEditForm } from './edit-interfaces';
+import { EditPageParams, IEditForm } from './edit-interfaces';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 import { FileUploaderComponent } from '../../shared/components/file-uploader/file-uploader.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit',
@@ -44,7 +45,7 @@ export class EditComponent implements OnInit {
   public editForm!: FormGroup<IEditForm>;
   public product: IProduct | undefined = undefined;
 
-  private route$ = inject(ActivatedRoute).params;
+  private route$ = inject(ActivatedRoute).params as Observable<EditPageParams>;
   private router = inject(Router);
   private alert = inject(AlertService);
   private destroyRef = inject(DestroyRef);
@@ -90,7 +91,7 @@ export class EditComponent implements OnInit {
   private loadProductData(): void {
     this.route$
       .pipe(
-        switchMap((params: Params) =>
+        switchMap((params: EditPageParams) =>
           this.productService.getById(params['id'])
         ),
         takeUntilDestroyed(this.destroyRef)

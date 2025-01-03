@@ -28,6 +28,7 @@ export class ButtonCheckboxComponent implements ControlValueAccessor {
   @Input() public value = false;
   @Input() public buttonSize: ButtonSize = ButtonSize.SMALL;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange = (value: boolean) => {};
   onTouched = () => {};
 

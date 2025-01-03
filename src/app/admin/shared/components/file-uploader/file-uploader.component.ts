@@ -35,6 +35,7 @@ export class FileUploaderComponent implements ControlValueAccessor, Validator {
   public disabled = false;
   public loading = signal(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange = (value: ImageSnippet) => {};
   onTouched = () => {};
   writeValue(obj: ImageSnippet): void {

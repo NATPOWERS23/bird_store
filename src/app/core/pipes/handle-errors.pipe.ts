@@ -7,7 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class HandleErrorsPipe implements PipeTransform {
   transform(value: HttpErrorResponse | null): string {
-    const message = value?.error.error.message.split(':')[0].trim();
+    const response = value ? (value.error.error.message as string) : '';
+    const message = response.split(':')[0].trim();
 
     if (!message) return '';
 

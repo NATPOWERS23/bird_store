@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/admin/pages/login/auth.service';
 import { authActions } from './auth.actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { FbAuthResponse } from 'src/app/admin/pages/login/login';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export const LoginEffects = createEffect(
   (actions$ = inject(Actions), authService = inject(AuthService)) => {
@@ -14,7 +15,9 @@ export const LoginEffects = createEffect(
           map((currentUser: FbAuthResponse) => {
             return authActions.loginUserSuccess({ user: currentUser });
           }),
-          catchError(err => of(authActions.loginUserFailure(err)))
+          catchError(err => of(
+            authActions.loginUserFailure(err as { errors: HttpErrorResponse }))
+          )
         );
       })
     );

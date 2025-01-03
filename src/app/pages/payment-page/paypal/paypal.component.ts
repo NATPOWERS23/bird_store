@@ -15,8 +15,9 @@ import { Observable, tap } from 'rxjs';
 
 import { ButtonComponent } from '@core/components/button/button.component';
 import { ButtonSize } from '@core/components/button/button';
-
-declare let paypal: any;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+declare let paypal;
 
 @Component({
   selector: 'app-paypal',
@@ -47,17 +48,18 @@ export class PaypalComponent implements OnInit {
   }
 
   private initiatePaypal(value: number): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     paypal
       .Buttons({
         createOrder: (
-          data: any,
+          data: unknown,
           actions: {
             order: {
               create: (arg0: {
                 purchase_units: {
-                  amount: { currence_code: string; value: number };
+                  amount: { currency_code: string; value: number };
                 }[];
-              }) => any;
+              }) => unknown;
             };
           }
         ) => {
@@ -65,7 +67,7 @@ export class PaypalComponent implements OnInit {
             purchase_units: [
               {
                 amount: {
-                  currence_code: 'USD',
+                  currency_code: 'USD',
                   value,
                 },
               },
@@ -73,12 +75,12 @@ export class PaypalComponent implements OnInit {
           });
         },
         onApprove: async (
-          data: any,
-          actions: { order: { capture: () => any } }
+          data: unknown,
+          actions: { order: { capture: () => unknown } }
         ) => {
           const order = await actions.order.capture();
           this.payFor = true;
-          console.log(order);
+          console.log(data, order);
         },
       })
       .render(this.paypalElement.nativeElement);

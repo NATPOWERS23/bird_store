@@ -9,3 +9,5 @@ export interface AppState {
   item: IProduct;
   user: UserState;
 }
+
+export type StateStatus = 'pending' | 'loading' | 'error' | 'success' | ''

@@ -5,7 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FilterService {
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   public filterValue$: BehaviorSubject<{ [key: string]: boolean } | undefined> =
     new BehaviorSubject(undefined);
 

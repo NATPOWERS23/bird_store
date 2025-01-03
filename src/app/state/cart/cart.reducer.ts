@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import * as CartActions from './cart.actions';
 import { CartState } from './cart-state.interface';
 import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
+import { StateStatus } from '../app.state';
 
 export const cartFeatureKey = 'cart';
 
@@ -20,6 +21,7 @@ export const cartReducer = createReducer(
     (state: CartState, req: { product: IProduct; quantity: string }) => {
       const entriesClone: CartState = JSON.parse(JSON.stringify(state));
       entriesClone.items.push(req.product);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of Array(+req.quantity - 1).keys()) {
         entriesClone.items.push(req.product);
       }
@@ -53,7 +55,7 @@ export const cartReducer = createReducer(
   ),
 
   on(CartActions.loadCart, (state: CartState) => {
-    return { ...state, status: 'loading' };
+    return { ...state, status: 'loading' as StateStatus};
   }),
 
   on(CartActions.loadCartSuccess, (state: CartState, cart) => {

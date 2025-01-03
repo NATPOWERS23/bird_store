@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { ProductState } from './products-state.interface';
 import { productsActions } from './products.actions';
+import { StateStatus } from '../app.state';
 
 export const initialProductsState: ProductState = {
   products: [],
@@ -37,7 +38,7 @@ export const productsFeature = createFeature({
     on(productsActions.deleteProduct, (state: ProductState) => ({
       ...state,
       error: null,
-      status: 'loading',
+      status: 'loading' as StateStatus,
     })),
 
     on(productsActions.deleteProductSuccess, (state: ProductState, action) => ({

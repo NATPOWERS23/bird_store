@@ -1,6 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { UserState } from './user-state.interface';
 import { authActions } from './auth.actions';
+import { StateStatus } from '../../app.state';
 
 export const initialUserState: UserState = {
   user: undefined,
@@ -16,7 +17,7 @@ const authFeature = createFeature({
       return {
         ...state,
         errValidation: null,
-        status: 'loading',
+        status: 'loading' as StateStatus,
       };
     }),
 
