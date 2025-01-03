@@ -15,7 +15,7 @@ export default [
     children: [
       {
         path: '',
-        redirectTo: '/admin/login',
+        redirectTo: '/admin/dashboard',
         pathMatch: 'full',
       },
       {

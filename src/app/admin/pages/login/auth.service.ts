@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 import { fbAuthResponse } from './auth-service';
 import { FbAuthResponse, IUser } from './login';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  private router = inject(Router);
+
   constructor(private http: HttpClient) {}
 
   get token(): string | null {
@@ -33,6 +36,7 @@ export class AuthService {
 
   public logout(): void {
     this.setToken(null);
+    this.router.navigate(['/admin', 'login']);
   }
 
   public isAuthenticated(): boolean {
@@ -47,7 +51,7 @@ export class AuthService {
       localStorage.setItem('fb-token', response.idToken);
       localStorage.setItem('fb-token-exp', expDate.toString());
     } else {
-      /*localStorage.clear()*/
+      localStorage.clear()
     }
   }
 }

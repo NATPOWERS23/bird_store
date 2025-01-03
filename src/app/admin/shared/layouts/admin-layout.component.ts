@@ -18,11 +18,9 @@ import { NgIf } from '@angular/common';
 })
 export class AdminLayoutComponent {
   public auth = inject(AuthService);
-  private router = inject(Router);
 
   public logout(event: Event): void {
     event.preventDefault();
     this.auth.logout();
-    this.router.navigate(['/admin', 'login']);
   }
 }
