@@ -4,7 +4,7 @@
     [ngStyle]="{ backgroundColor: checked ? '#526AF2' : '#F2E9E9' }">
     <div class="d-flex justify-content-between align-items-end">
       <section class="toolbar__check-section">
-        <mat-checkbox [(ngModel)]="!!checked"> </mat-checkbox>
+        <mat-checkbox [ngModel]="!!checked" (ngModelChange)="checked = $event"> </mat-checkbox>
 
         <app-button
           img_src="../../../../assets/images/Menu{{ +checked }}.png"
