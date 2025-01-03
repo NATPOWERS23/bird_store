@@ -14,11 +14,6 @@ export const appRoutes: Route[] = [
     children: [
       {
         path: '',
-        redirectTo: '/',
-        pathMatch: 'full',
-      },
-      {
-        path: '',
         component: ProductsComponent,
       },
       {
@@ -42,6 +37,7 @@ export const appRoutes: Route[] = [
         redirectTo: 'info/aboutus',
         pathMatch: 'full',
       },
+      { path: '**', redirectTo: '' },
     ],
   },
   {
