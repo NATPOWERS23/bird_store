@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
-  Router,
   RouterLink,
   RouterLinkActive,
   RouterOutlet,
