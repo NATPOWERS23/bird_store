@@ -1,7 +1,7 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, map } from 'rxjs';
 import { BUTTONS_SETTINGS, PAGE_SETTINGS } from './info-config';
@@ -18,8 +18,6 @@ import { PageTitleComponent } from '@core/components/page-title/page-title.compo
         ButtonComponent,
         RouterModule,
         MatCardModule,
-        AsyncPipe,
-        NgIf,
         NgFor,
     ]
 })

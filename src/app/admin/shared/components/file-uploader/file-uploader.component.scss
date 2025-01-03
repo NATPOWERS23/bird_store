@@ -10,9 +10,11 @@
     min-width: 245px;
     max-width: 100%;
     align-items: center;
+    flex-direction: column;
     input,
     .upload-img {
       display: block;
+      max-width: 45%;
     }
     .upload-img img {
       width: 70px;

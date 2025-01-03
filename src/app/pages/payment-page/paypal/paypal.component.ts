@@ -23,7 +23,7 @@ declare let paypal;
     selector: 'app-paypal',
     templateUrl: './paypal.component.html',
     styleUrls: ['./paypal.component.scss'],
-    imports: [NgIf, ButtonComponent],
+    imports: [NgIf],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaypalComponent implements OnInit {

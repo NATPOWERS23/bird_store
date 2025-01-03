@@ -1,4 +1,4 @@
-@import 'helpers/variables';
+@use 'helpers/variables' as vars;;
 
 .loader-container {
   position: fixed;
@@ -22,7 +22,7 @@
   border: 2px solid transparent;
   overflow: hidden;
   border-radius: 50%;
-  box-shadow: $shadow;
+  box-shadow: vars.$shadow;
 }
 
 .loader:before {
@@ -33,10 +33,10 @@
   right: 6px;
   bottom: 6px;
   z-index: 10;
-  background: $primary-color-bg;
+  background: vars.$primary-color-bg;
   border-radius: 50%;
-  border: 2px solid $primary-color-bg;
-  box-shadow: $inner-shadow;
+  border: 2px solid vars.$primary-color-bg;
+  box-shadow: vars.$inner-shadow;
 }
 
 .loader span {

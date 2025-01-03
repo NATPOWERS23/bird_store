@@ -1,5 +1,5 @@
-@import 'helpers/variables';
-@import 'helpers/mixins';
+@use 'helpers/variables' as vars;;
+@use 'helpers/mixins' as mixins;
 
 ::ng-deep .mat-button-wrapper {
   display: flex;
@@ -7,16 +7,16 @@
 }
 
 .btn-primary {
-  box-shadow: $shadow;
+  box-shadow: vars.$shadow;
 }
 
 .default.checked {
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
 }
 
 .contrast.checked {
-  background-color: $secondary-color-bg;
-  color: $secondary-text-color;
+  background-color: vars.$secondary-color-bg;
+  color: vars.$secondary-text-color;
 }
 
 .small {
@@ -39,7 +39,7 @@
 
 .just-icon .button-text {
   display: flex;
-  @include responsive(mobile) {
+  @include mixins.responsive(mobile) {
     display: none;
   }
 }

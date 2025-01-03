@@ -1,9 +1,9 @@
-@import '../../../assets/styles/helpers/mixins';
-@import '../../../assets/styles/helpers/variables';
-@import '../../../assets/styles/components/buttons';
+@use 'helpers/mixins' as mixins;
+@use 'helpers/variables' as vars;
+@use '../../../assets/styles/components/buttons' as button;
 
 .mat-card:not([class*='mat-elevation-z']) {
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
 }
 
 mat-card {
@@ -15,8 +15,8 @@ mat-card {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  color: $primary-text-color;
-  @include font-menu;
+  color: vars.$primary-text-color;
+  @include mixins.font-menu;
   mat-card-content {
     margin-bottom: 0;
     display: flex;
@@ -35,6 +35,6 @@ mat-card {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 15px;
-    box-shadow: $inner-shadow;
+    box-shadow: vars.$inner-shadow;
   }
 }

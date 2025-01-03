@@ -1,4 +1,4 @@
-import { AsyncPipe, NgClass, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { Component, forwardRef, signal } from '@angular/core';
 import {
   AbstractControl,
@@ -14,7 +14,7 @@ import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
     selector: 'app-file-uploader',
     templateUrl: './file-uploader.component.html',
     styleUrls: ['./file-uploader.component.scss'],
-    imports: [NgClass, NgIf, NgStyle, AsyncPipe],
+    imports: [NgClass, NgIf, NgStyle],
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

@@ -1,5 +1,5 @@
-@import '../../../assets/styles/helpers/mixins';
-@import '../../../assets/styles/helpers/variables';
+@use 'helpers/mixins' as mixins;
+@use 'helpers/variables' as vars;
 
 /*main*/
 /*paginator*/
@@ -24,7 +24,7 @@
       background-color: transparent;
       color: #7c838a;
       min-width: 30px;
-      @include font-numb;
+      @include mixins.font-numb;
     }
     a,
     button {
@@ -34,7 +34,7 @@
       border-radius: 10px;
       display: flex;
       justify-content: center;
-      box-shadow: $shadow;
+      box-shadow: vars.$shadow;
     }
   }
 }
@@ -47,6 +47,6 @@
     font-weight: 400;
     line-height: 14px;
     letter-spacing: 2px;
-    color: $primary-text-color;
+    color: vars.$primary-text-color;
   }
 }

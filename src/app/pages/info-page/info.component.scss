@@ -1,5 +1,4 @@
-@import '../../../assets/styles/helpers/mixins';
-@import '../../../assets/styles/helpers/variables';
+@use 'helpers/variables' as vars;
 
 .aboutus__image,
 .delivery__image,
@@ -9,7 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 15px;
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
   background-size: cover;
 }
 

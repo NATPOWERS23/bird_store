@@ -1,6 +1,5 @@
-@import '../../../assets/styles/helpers/mixins';
-@import '../../../assets/styles/helpers/variables';
-@import '../../../assets/styles/components/buttons';
+@use 'helpers/mixins' as mixins;
+@use 'helpers/variables' as vars;
 
 .custom_button {
   width: 100%;
@@ -15,12 +14,12 @@ mat-card {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  color: $primary-text-color;
-  @include font-menu;
+  color: vars.$primary-text-color;
+  @include mixins.font-menu;
 }
 
 mat-card:not([class*='mat-elevation-z']) {
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
 }
 
 img {

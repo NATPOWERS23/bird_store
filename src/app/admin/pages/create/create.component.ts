@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { ProductsService } from '../../../pages/products-page/products.service';
@@ -32,7 +32,6 @@ import { FileUploaderComponent } from '../../shared/components/file-uploader/fil
         MaterialModule,
         NgClass,
         NgIf,
-        NgStyle,
         FileUploaderComponent,
     ]
 })

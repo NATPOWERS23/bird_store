@@ -1,6 +1,6 @@
+@use 'helpers/mixins' as mixins;
+@use 'helpers/variables' as vars;;
 @import 'customize-material';
-@import 'helpers/mixins';
-@import 'helpers/variables';
 
 .toolbar {
   background-color: transparent;
@@ -20,7 +20,7 @@
   }
 
   &__options {
-    @include font-menu;
+    @include mixins.font-menu;
     display: flex;
     flex-direction: column;
     row-gap: 25px !important;
@@ -28,7 +28,7 @@
 
     ::ng-deep .mdc-list-item__content {
       justify-content: space-around;
-      color: $secondary-text-color;
+      color: vars.$secondary-text-color;
     }
     .mat-mdc-list-item {
       text-align: center;

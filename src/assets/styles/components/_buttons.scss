@@ -1,5 +1,5 @@
-@import '../helpers/mixins';
-@import '../helpers/variables';
+@use 'helpers/mixins' as mixins;
+@use 'helpers/variables' as vars;
 
 .btn {
   border: none;
@@ -13,12 +13,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @include font-numb;
-  color: $primary-text-color;
+  @include mixins.font-numb;
+  color: vars.$primary-text-color;
   &:hover,
   &:focus {
     border: none;
-    background-color: $hover-color-bg;
-    color: $hover-text-color;
+    background-color: vars.$hover-color-bg;
+    color: vars.$hover-text-color;
   }
 }

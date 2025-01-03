@@ -1,35 +1,35 @@
 /*file to style whole app*/
+@use 'helpers/variables' as vars;
 @import 'components/buttons';
-@import 'helpers/variables';
 
 .container {
   padding: 0 25px;
 }
 
 .inner-shadow {
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
 }
 
 /*scrollbar stylesheet*/
 *::-webkit-scrollbar {
   width: 10px !important;
-  background-color: $primary-color-bg !important;
+  background-color: vars.$primary-color-bg !important;
 }
 
 *::-webkit-scrollbar-thumb {
   width: 10px !important;
-  background-color: darken($color: $primary-color-bg, $amount: 5) !important;
+  background-color: darken($color: vars.$primary-color-bg, $amount: 5) !important;
   border-radius: 10px !important;
-  box-shadow: $inner-shadow;
+  box-shadow: vars.$inner-shadow;
 }
 
 *::-webkit-scrollbar:horizontal {
   width: 10px !important;
-  background-color: $primary-color-bg !important;
+  background-color: vars.$primary-color-bg !important;
 }
 
 *::-webkit-scrollbar-thumb:horizontal {
   width: 10px !important;
-  background-color: $primary-color-bg !important;
+  background-color: vars.$primary-color-bg !important;
   border-radius: 10px;
 }

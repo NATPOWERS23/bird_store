@@ -55,7 +55,10 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "src/assets/styles"
-              ]
+              ],
+              "sass": {
+                "silenceDeprecations": ["mixed-decls", "color-functions", "global-builtin", "import"]
+              }
             },
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
