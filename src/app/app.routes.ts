@@ -37,11 +37,11 @@ export const appRoutes: Route[] = [
         redirectTo: 'info/aboutus',
         pathMatch: 'full',
       },
-      { path: '**', redirectTo: '' },
     ],
   },
   {
     path: 'admin',
     loadChildren: () => import('./admin/admin.routes'),
   },
+  { path: '**', redirectTo: '' },
 ];
