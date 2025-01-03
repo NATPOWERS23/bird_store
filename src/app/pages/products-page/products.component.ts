@@ -12,10 +12,10 @@ import { selectAllProducts } from '../../state/products/products.selectors';
 import { SearchInputComponent } from '@core/components/search-input/search-input.component';
 import { IPageSizeParams } from '@core/components/custom-slider/slider.interface';
 import { CustomSliderComponent } from '@core/components/custom-slider/custom-slider.component';
-import { SearchPipe } from '../../core/pipes/search.pipe';
 import { FilterPipe } from '@core/pipes/filter.pipe';
 import { FilterService } from '@core/services/filter.service';
 import { LoaderService } from '@core/services/loader.service';
+import { SearchPipe } from '@core/pipes/search.pipe';
 import { IProduct, IProductGroup } from './types/product-interfaces';
 import { ItemComponent } from './item/item.component';
 import { productsActions } from 'src/app/state/products/products.actions';
@@ -42,7 +42,7 @@ export class ProductsComponent {
 
   /*paginator*/
   public page = 1;
-  public productsPerPage = 5;
+  public productsPerPage = 20;
 
   public search = '';
   public filter: { [key: string]: boolean } | undefined = undefined;
