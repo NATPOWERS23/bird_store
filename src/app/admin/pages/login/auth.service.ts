@@ -36,7 +36,6 @@ export class AuthService {
 
   public logout(): void {
     this.setToken(null);
-    this.router.navigate(['/admin', 'login']);
   }
 
   public isAuthenticated(): boolean {
