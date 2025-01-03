@@ -19,12 +19,11 @@ import { selectError } from 'src/app/state/products/products.reducer';
 import { AlertService } from '../../shared/components/alert/alert.service';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  imports: [FormsModule, NgIf, SearchPipe, NgForOf, RouterLink, AsyncPipe],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    imports: [FormsModule, NgIf, SearchPipe, NgForOf, RouterLink, AsyncPipe],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
   public searchStr = '';

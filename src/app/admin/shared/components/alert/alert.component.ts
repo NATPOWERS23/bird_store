@@ -5,11 +5,10 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AlertService } from './alert.service';
 
 @Component({
-  selector: 'app-alert',
-  standalone: true,
-  templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
-  imports: [NgClass, NgIf],
+    selector: 'app-alert',
+    templateUrl: './alert.component.html',
+    styleUrls: ['./alert.component.scss'],
+    imports: [NgClass, NgIf]
 })
 export class AlertComponent implements OnInit {
   @Input() delay = 5000;

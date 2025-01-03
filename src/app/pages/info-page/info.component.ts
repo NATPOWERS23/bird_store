@@ -10,19 +10,18 @@ import { ButtonComponent } from '@core/components/button/button.component';
 import { PageTitleComponent } from '@core/components/page-title/page-title.component';
 
 @Component({
-  selector: 'app-info',
-  standalone: true,
-  templateUrl: './info.component.html',
-  styleUrls: ['./info.component.scss'],
-  imports: [
-    PageTitleComponent,
-    ButtonComponent,
-    RouterModule,
-    MatCardModule,
-    AsyncPipe,
-    NgIf,
-    NgFor,
-  ],
+    selector: 'app-info',
+    templateUrl: './info.component.html',
+    styleUrls: ['./info.component.scss'],
+    imports: [
+        PageTitleComponent,
+        ButtonComponent,
+        RouterModule,
+        MatCardModule,
+        AsyncPipe,
+        NgIf,
+        NgFor,
+    ]
 })
 export class InfoComponent implements OnInit {
   public ButtonSize: typeof ButtonSize = ButtonSize;

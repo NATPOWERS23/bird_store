@@ -12,20 +12,19 @@ import { ButtonComponent } from '@core/components/button/button.component';
 import { FilterService } from '@core/services/filter.service';
 
 @Component({
-  selector: 'app-main-layout',
-  standalone: true,
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.scss'],
-  imports: [
-    MaterialModule,
-    NgStyle,
-    FormsModule,
-    RouterLink,
-    ButtonComponent,
-    RouterOutlet,
-    NgIf,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-main-layout',
+    templateUrl: './main-layout.component.html',
+    styleUrls: ['./main-layout.component.scss'],
+    imports: [
+        MaterialModule,
+        NgStyle,
+        FormsModule,
+        RouterLink,
+        ButtonComponent,
+        RouterOutlet,
+        NgIf,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainLayoutComponent {
   public ButtonSize: typeof ButtonSize = ButtonSize;

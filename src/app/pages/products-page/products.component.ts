@@ -21,20 +21,19 @@ import { ItemComponent } from './item/item.component';
 import { productsActions } from 'src/app/state/products/products.actions';
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
-  imports: [
-    SearchInputComponent,
-    CustomSliderComponent,
-    NgxPaginationModule,
-    CommonModule,
-    FilterPipe,
-    SearchPipe,
-    MatInputModule,
-    ItemComponent,
-  ],
+    selector: 'app-products',
+    templateUrl: './products.component.html',
+    styleUrls: ['./products.component.scss'],
+    imports: [
+        SearchInputComponent,
+        CustomSliderComponent,
+        NgxPaginationModule,
+        CommonModule,
+        FilterPipe,
+        SearchPipe,
+        MatInputModule,
+        ItemComponent,
+    ]
 })
 export class ProductsComponent {
   public products$: Observable<IProduct[]>;

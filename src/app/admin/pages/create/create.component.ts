@@ -23,19 +23,18 @@ import { IProduct } from 'src/app/pages/products-page/types/product-interfaces';
 import { FileUploaderComponent } from '../../shared/components/file-uploader/file-uploader.component';
 
 @Component({
-  selector: 'app-create',
-  standalone: true,
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    ReactiveFormsModule,
-    MaterialModule,
-    NgClass,
-    NgIf,
-    NgStyle,
-    FileUploaderComponent,
-  ],
+    selector: 'app-create',
+    templateUrl: './create.component.html',
+    styleUrls: ['./create.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        ReactiveFormsModule,
+        MaterialModule,
+        NgClass,
+        NgIf,
+        NgStyle,
+        FileUploaderComponent,
+    ]
 })
 export class CreateComponent implements OnInit {
   public createForm: FormGroup = new FormGroup({});

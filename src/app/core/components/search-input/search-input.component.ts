@@ -6,12 +6,11 @@ import { NgStyle } from '@angular/common';
 import { ButtonComponent } from '@core/components/button/button.component';
 
 @Component({
-  selector: 'app-search-input',
-  standalone: true,
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss'],
-  imports: [MatInputModule, NgStyle, ButtonComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-search-input',
+    templateUrl: './search-input.component.html',
+    styleUrls: ['./search-input.component.scss'],
+    imports: [MatInputModule, NgStyle, ButtonComponent],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchInputComponent {
   @Input() public checked = false;

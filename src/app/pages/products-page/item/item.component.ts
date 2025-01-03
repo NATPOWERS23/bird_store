@@ -21,22 +21,21 @@ import {
 } from '../types/product-interfaces';
 
 @Component({
-  selector: 'app-item',
-  standalone: true,
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss'],
-  imports: [
-    MaterialModule,
-    NgClass,
-    RouterLink,
-    NgStyle,
-    ReactiveFormsModule,
-    ButtonComponent,
-    ButtonCheckboxComponent,
-    CurrencyPipe,
-    NgIf,
-    MatBadgeModule,
-  ],
+    selector: 'app-item',
+    templateUrl: './item.component.html',
+    styleUrls: ['./item.component.scss'],
+    imports: [
+        MaterialModule,
+        NgClass,
+        RouterLink,
+        NgStyle,
+        ReactiveFormsModule,
+        ButtonComponent,
+        ButtonCheckboxComponent,
+        CurrencyPipe,
+        NgIf,
+        MatBadgeModule,
+    ]
 })
 export class ItemComponent implements OnInit {
   @Input() public product!: IProduct;

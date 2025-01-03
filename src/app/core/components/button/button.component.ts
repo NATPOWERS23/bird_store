@@ -4,12 +4,11 @@ import { NgClass, NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-button',
-  standalone: true,
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
-  imports: [NgClass, MatIconModule, NgIf],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-button',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    imports: [NgClass, MatIconModule, NgIf],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   @Input() public icon_name = '';

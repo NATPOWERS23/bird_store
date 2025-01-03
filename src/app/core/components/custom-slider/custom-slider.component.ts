@@ -12,12 +12,11 @@ import {
 import { IPageSizeParams } from './slider.interface';
 
 @Component({
-  selector: 'app-custom-slider',
-  standalone: true,
-  templateUrl: './custom-slider.component.html',
-  styleUrls: ['./custom-slider.component.scss'],
-  imports: [FormsModule, MatSliderModule, MatCardModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-custom-slider',
+    templateUrl: './custom-slider.component.html',
+    styleUrls: ['./custom-slider.component.scss'],
+    imports: [FormsModule, MatSliderModule, MatCardModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomSliderComponent {
   @Input() public value = 5;
