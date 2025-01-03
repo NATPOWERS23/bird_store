@@ -26,7 +26,7 @@ const authFeature = createFeature({
         ...state,
         user: action.user,
         errValidation: null,
-        status: 'success',
+        status: 'success' as StateStatus,
       };
     }),
 
@@ -34,7 +34,7 @@ const authFeature = createFeature({
       return {
         ...state,
         errValidation: action.errors,
-        status: 'error',
+        status: 'error' as StateStatus,
       };
     })
   ),

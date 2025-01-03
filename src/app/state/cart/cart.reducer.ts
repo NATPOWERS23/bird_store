@@ -63,7 +63,7 @@ export const cartReducer = createReducer(
       ...state,
       cart: cart,
       error: null,
-      status: 'success',
+      status: 'success' as StateStatus,
     };
   }),
 
@@ -71,7 +71,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       error: error.error,
-      status: 'error',
+      status: 'error' as StateStatus,
     };
   })
 );

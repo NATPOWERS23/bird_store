@@ -16,7 +16,7 @@ export const productsFeature = createFeature({
     on(productsActions.loadProducts, state => ({
       ...state,
       error: null,
-      status: 'loading',
+      status: 'loading' as StateStatus,
     })),
 
     on(
@@ -25,14 +25,14 @@ export const productsFeature = createFeature({
         ...state,
         products: products.products,
         error: null,
-        status: 'success',
+        status: 'success' as StateStatus,
       })
     ),
 
     on(productsActions.loadProductsFailure, (state: ProductState, error) => ({
       ...state,
       error: error.error,
-      status: 'error',
+      status: 'error' as StateStatus,
     })),
 
     on(productsActions.deleteProduct, (state: ProductState) => ({
@@ -45,13 +45,13 @@ export const productsFeature = createFeature({
       ...state,
       products: state.products.filter(item => item.id !== action.id),
       error: null,
-      status: 'success',
+      status: 'success' as StateStatus,
     })),
 
     on(productsActions.deleteProductFailure, (state: ProductState, error) => ({
       ...state,
       error: error.error,
-      status: 'error',
+      status: 'error' as StateStatus,
     }))
   ),
 });
