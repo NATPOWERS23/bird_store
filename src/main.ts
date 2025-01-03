@@ -53,6 +53,6 @@ bootstrapApplication(AppComponent, {
       autoPause: true,
       trace: false,
       traceLimit: 75,
-    }),
+    connectInZone: true}),
   ],
 }).catch(error => console.log(error));
