@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable, inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 
 interface IRecommendationData {
   favorites: string[],
@@ -11,6 +13,10 @@ interface IRecommendationData {
 export class FavoritesService {
   private LOCAL_STORAGE_KEY = 'userData';
 
+  http = inject(HttpClient)
+
+  constructor(private fns: AngularFireFunctions) { }
+
   // Add an item to local favorites
   addFavorite(itemId: string): void {
     const data: IRecommendationData = this.getLocalData();
@@ -18,6 +24,10 @@ export class FavoritesService {
       data.favorites.push(itemId);
       this.saveLocalData(data);
     }
+  }
+
+  testHelloWord() {
+    this.triggerSyncFunction();
   }
 
   // Remove an item from local favorites
@@ -37,10 +47,11 @@ export class FavoritesService {
     localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(data));
   }
 
-  // Track user interaction with an item
-  // trackInteraction(itemId: string): void {
-  //   const data: IRecommendationData = this.getLocalData();
-  //   data.interactions[itemId] = (data.interactions[itemId] || 0) + 1;
-  //   this.saveLocalData(data);
-  // }
+  private triggerSyncFunction() {
+    const url = 'https://helloworld-nygdalcbqa-uc.a.run.app';
+    this.http.get(url)
+      .subscribe(response => {
+        console.log(response);
+      });
+  }
 }

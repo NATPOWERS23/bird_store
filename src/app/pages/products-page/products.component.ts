@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Store } from '@ngrx/store';
+import {FavoritesService} from '../../features/favorites/favorites.service';
 
 import { selectGroupedCartEntries } from '../../state/cart/cart.selectors';
 import { selectAllProducts } from '../../state/products/products.selectors';
@@ -40,6 +41,8 @@ import { RecommendationsComponent } from '../../features/recommendations/recomme
 export class ProductsComponent {
   public products$: Observable<IProduct[]>;
   public cartEntries$: Observable<IProductGroup[]>;
+
+  favoriteService = inject(FavoritesService);
 
   /*paginator*/
   public page = 1;

@@ -1,8 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { IProduct } from '../../pages/products-page/types/product-interfaces';
 import { FavoritesService } from '../favorites/favorites.service';
-import { CommonModule, NgFor } from '@angular/common';
-import { PageTitleComponent } from '@core/components/page-title/page-title.component';
+import { CommonModule } from '@angular/common';
 import { ButtonSize } from '@core/components/button/button';
 import { MatCardModule } from '@angular/material/card';
 import { ButtonComponent } from '@core/components/button/button.component';
@@ -10,7 +9,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recommendations',
-  imports: [CommonModule, PageTitleComponent, ButtonComponent, MatCardModule, RouterLink],
+  imports: [CommonModule, ButtonComponent, MatCardModule, RouterLink],
   templateUrl: './recommendations.component.html',
   styleUrl: './recommendations.component.scss'
 })
@@ -22,9 +21,6 @@ export class RecommendationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRecommendations();
-    this.recommendationService.fetchPopularItems().subscribe(v => {
-      this.popularItems.set(v)
-    });
   }
 
   addFavorite(itemId: string): void {
@@ -38,13 +34,6 @@ export class RecommendationsComponent implements OnInit {
   }
 
   private loadRecommendations(): void {
-    // const data = JSON.parse(localStorage.getItem('userData') || '{}');
-    // const favorites = data.favorites || [];
-    //
-    // // Simple local recommendation logic: show popular items not in favorites
-    // this.recommendations = this.popularItems.filter(
-    //   item => !favorites.includes(item.id)
-    // );
   }
 
   protected readonly ButtonSize = ButtonSize;

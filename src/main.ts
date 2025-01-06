@@ -1,3 +1,4 @@
+import {FIREBASE_OPTIONS} from '@angular/fire/compat';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { InjectionToken, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -12,7 +13,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-import { environment } from './environments/environment';
+import { environment, fbConfig } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
 import { cartReducer } from './app/state/cart/cart.reducer';
@@ -26,6 +27,11 @@ import {
   authFeatureKey,
   authReducer,
 } from './app/state/admin/login/login.reducer';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFunctions, provideFunctions } from '@angular/fire/functions';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { USE_EMULATOR } from '@angular/fire/compat/auth';
 
 export const ENV = new InjectionToken('environment');
 
@@ -54,5 +60,11 @@ bootstrapApplication(AppComponent, {
       trace: false,
       traceLimit: 75,
     connectInZone: true}),
+    { provide: FIREBASE_OPTIONS, useValue: fbConfig },
+    provideFirebaseApp(() => initializeApp(fbConfig)),
+    provideFunctions(() => getFunctions()),
+    provideStorage(() => getStorage()),
+    provideDatabase(() => getDatabase()),
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
   ],
 }).catch(error => console.log(error));
