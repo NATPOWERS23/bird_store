@@ -19,6 +19,7 @@ import {
   IProduct,
   IProductGroup,
 } from '../types/product-interfaces';
+import { FavoritesService } from '../../../features/favorites/favorites.service';
 
 @Component({
     selector: 'app-item',
@@ -44,6 +45,8 @@ export class ItemComponent implements OnInit {
 
   public quantityForm!: FormGroup<IItemForm>;
   public ButtonSize: typeof ButtonSize = ButtonSize;
+
+  public recommendationService = inject(FavoritesService)
 
   private store = inject(Store);
 

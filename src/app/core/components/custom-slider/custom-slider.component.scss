@@ -2,7 +2,6 @@
 @use 'helpers/mixins' as mixins;
 
 .slider {
-  margin-top: 15px;
   background: transparent;
   padding: 0;
   @include mixins.font-page;

@@ -30,6 +30,10 @@
   </mat-card-subtitle>
 
   <mat-card-actions class="d-flex">
+    <app-button
+      icon_name="favorite"
+      [size]="ButtonSize.SMALL"
+      (click)="recommendationService.addFavorite(product.id)"></app-button>
     <!-- quantity buttons -->
     <form [formGroup]="quantityForm" class="quantity-form">
       <app-button

@@ -1,36 +1,41 @@
-<ng-container *ngIf="(products$ | async)?.length"
-  ><app-search-input (searchEvent)="searchItem($event)"></app-search-input>
+<section class="d-flex flex-column gap-3" *ngIf="(products$ | async)?.length">
 
-  <app-custom-slider
-    (changePageCapacity)="onPagination($event)"
-    [value]="productsPerPage">
-  </app-custom-slider>
+    <app-search-input (searchEvent)="searchItem($event)"></app-search-input>
 
-  <div>
-    <div class="row">
-      <app-item
-        [addedToCart]="cartEntries$ | async"
-        [product]="product"
-        [value]="productsPerPage"
-        *ngFor="
+    <app-recommendations></app-recommendations>
+
+    <h2 class="text-secondary text-center mt-5">ALL PRODUCTS</h2>
+
+    <app-custom-slider
+      (changePageCapacity)="onPagination($event)"
+      [value]="productsPerPage">
+    </app-custom-slider>
+
+    <section class="products-list">
+      <div class="row">
+        <app-item
+          [addedToCart]="cartEntries$ | async"
+          [product]="product"
+          [value]="productsPerPage"
+          *ngFor="
           let product of products$
             | async
             | filterProducts: filter
             | searchProducts: search
             | paginate: { itemsPerPage: productsPerPage, currentPage: page }
         "
-        [ngClass]="{
+          [ngClass]="{
           'col-12': productsPerPage === 5,
           'col-12 col-md-4': productsPerPage === 20,
           'col-6 col-md-3': productsPerPage === 35
         }"></app-item>
 
-      <!-- pagination -->
-      <pagination-controls
-        previousLabel=""
-        nextLabel=""
-        (pageChange)="page = $event"
-        class="paginator-custom"></pagination-controls>
-    </div>
-  </div>
-</ng-container>
+        <!-- pagination -->
+        <pagination-controls
+          previousLabel=""
+          nextLabel=""
+          (pageChange)="page = $event"
+          class="paginator-custom"></pagination-controls>
+      </div>
+    </section>
+</section>

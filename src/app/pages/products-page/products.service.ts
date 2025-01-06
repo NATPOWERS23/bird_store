@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { FbCreateResponse, IProduct } from './types/product-interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient)
 
   public create(product: IProduct): Observable<IProduct> {
     return this.http
@@ -54,5 +54,21 @@ export class ProductsService {
 
   public remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.fbDbUrl}/products/${id}.json`);
+  }
+
+  public getPopular(limitCount: number): Observable<IProduct[]> {
+    return this.http
+      .get<{ [key: string]: IProduct }>(
+        `${environment.fbDbUrl}/products.json?orderBy="rating"&limitToLast=${limitCount}`
+      )
+      .pipe(
+        map((response: { [key: string]: IProduct }) => {
+          return Object.keys(response).map((key: string) => ({
+            ...response[key],
+            id: key,
+            name: response[key].name,
+          }));
+        })
+      );
   }
 }

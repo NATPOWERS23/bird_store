@@ -19,6 +19,7 @@ import { SearchPipe } from '@core/pipes/search.pipe';
 import { IProduct, IProductGroup } from './types/product-interfaces';
 import { ItemComponent } from './item/item.component';
 import { productsActions } from 'src/app/state/products/products.actions';
+import { RecommendationsComponent } from '../../features/recommendations/recommendations.component';
 
 @Component({
     selector: 'app-products',
@@ -27,6 +28,7 @@ import { productsActions } from 'src/app/state/products/products.actions';
     imports: [
         SearchInputComponent,
         CustomSliderComponent,
+        RecommendationsComponent,
         NgxPaginationModule,
         CommonModule,
         FilterPipe,

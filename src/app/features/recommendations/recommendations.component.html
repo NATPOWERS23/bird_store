@@ -1,0 +1,38 @@
+<section class="py-3">
+  <h2 class="text-secondary text-center">Recommendations</h2>
+  @for (item of recommendations; track item.id) {
+    <p>{{ item.id }} - {{ item.rating?.count }} votes</p>
+    <button (click)="addFavorite(item.id)">Add to Favorites</button>
+  } @empty {
+    <p class="text-secondary text-center">There are no items.</p>
+  }
+
+  <h2 class="text-secondary text-center">Popular Items</h2>
+  <div class="d-flex gap-3 overflow-x-scroll p-3 inner-shadow rounded-3">
+    @for (item of popularItems(); track item.id) {
+      <mat-card class="favorite-card rounded-3  bg-primary shadow overflow-hidden">
+        <mat-card-content
+          class="favorite-image"
+          [routerLink]="['/product-info-page', item.id]"
+          [ngStyle]="{
+        'background-image': item.imageUrl
+          ? 'url(' + item.imageUrl + ')'
+          : 'url(../../../../assets/images/404.jpeg)'
+      }">
+        </mat-card-content>
+        <mat-card-content class="d-flex justify-content-between align-items-center gap-3 py-3">
+          <span class="text-secondary">{{ item.rating?.count || 0 }} votes</span>
+          <div class="item-options">
+            <app-button
+              icon_name="favorite"
+              [size]="ButtonSize.SMALL"
+              (click)="addFavorite(item.id)"></app-button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    } @empty {
+      <p class="text-secondary text-center">There are no items.</p>
+    }
+  </div>
+</section>
+

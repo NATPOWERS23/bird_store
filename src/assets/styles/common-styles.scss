@@ -18,9 +18,8 @@
 
 *::-webkit-scrollbar-thumb {
   width: 10px !important;
-  background-color: darken($color: vars.$primary-color-bg, $amount: 5) !important;
+  background-color: darken($color: vars.$primary-color-bg, $amount: 10) !important;
   border-radius: 10px !important;
-  box-shadow: vars.$inner-shadow;
 }
 
 *::-webkit-scrollbar:horizontal {
@@ -30,6 +29,6 @@
 
 *::-webkit-scrollbar-thumb:horizontal {
   width: 10px !important;
-  background-color: vars.$primary-color-bg !important;
+  background-color: darken($color: vars.$primary-color-bg, $amount: 10) !important;
   border-radius: 10px;
 }

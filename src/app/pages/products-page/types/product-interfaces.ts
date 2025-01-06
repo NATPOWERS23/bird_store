@@ -8,6 +8,11 @@ export interface IProduct {
   imageUrl: string;
   quantity?: number;
   onSale: boolean;
+  rating?: IProductRating;
+}
+
+export interface IProductRating {
+  count: number
 }
 
 export interface IProductGroup {
