@@ -12,18 +12,18 @@ import { ButtonComponent } from '@core/components/button/button.component';
 import { PageTitleComponent } from '@core/components/page-title/page-title.component';
 
 @Component({
-    selector: 'app-payment-page',
-    templateUrl: './payment.component.html',
-    styleUrls: ['./payment.component.scss'],
-    imports: [
-        MaterialModule,
-        ButtonComponent,
-        PageTitleComponent,
-        PaypalComponent,
-        RouterLink,
-        AsyncPipe,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-payment-page',
+  templateUrl: './payment.component.html',
+  styleUrls: ['./payment.component.scss'],
+  imports: [
+    MaterialModule,
+    ButtonComponent,
+    PageTitleComponent,
+    PaypalComponent,
+    RouterLink,
+    AsyncPipe,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentComponent {
   public store = inject(Store);

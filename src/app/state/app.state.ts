@@ -10,4 +10,4 @@ export interface AppState {
   user: UserState;
 }
 
-export type StateStatus = 'pending' | 'loading' | 'error' | 'success' | ''
+export type StateStatus = 'pending' | 'loading' | 'error' | 'success' | '';

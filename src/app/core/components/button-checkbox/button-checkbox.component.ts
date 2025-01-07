@@ -9,18 +9,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ButtonComponent } from '@core/components/button/button.component';
 
 @Component({
-    selector: 'app-button-checkbox',
-    templateUrl: './button-checkbox.component.html',
-    styleUrls: ['./button-checkbox.component.scss'],
-    imports: [MatCheckboxModule, ButtonComponent, ReactiveFormsModule],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            multi: true,
-            useExisting: ButtonCheckboxComponent,
-        },
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-button-checkbox',
+  templateUrl: './button-checkbox.component.html',
+  styleUrls: ['./button-checkbox.component.scss'],
+  imports: [MatCheckboxModule, ButtonComponent, ReactiveFormsModule],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: ButtonCheckboxComponent,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonCheckboxComponent implements ControlValueAccessor {
   @Input() public iconName = '';

@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-recommendations',
   imports: [CommonModule, ButtonComponent, MatCardModule, RouterLink],
   templateUrl: './recommendations.component.html',
-  styleUrl: './recommendations.component.scss'
+  styleUrl: './recommendations.component.scss',
 })
 export class RecommendationsComponent implements OnInit {
   recommendations: IProduct[] = [];
@@ -33,8 +33,7 @@ export class RecommendationsComponent implements OnInit {
     this.loadRecommendations();
   }
 
-  private loadRecommendations(): void {
-  }
+  private loadRecommendations(): void {}
 
   protected readonly ButtonSize = ButtonSize;
 }

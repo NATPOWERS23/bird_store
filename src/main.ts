@@ -1,4 +1,4 @@
-import {FIREBASE_OPTIONS} from '@angular/fire/compat';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { InjectionToken, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -59,12 +59,13 @@ bootstrapApplication(AppComponent, {
       autoPause: true,
       trace: false,
       traceLimit: 75,
-    connectInZone: true}),
+      connectInZone: true,
+    }),
     { provide: FIREBASE_OPTIONS, useValue: environment.fbConfig },
     provideFirebaseApp(() => initializeApp(environment.fbConfig)),
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase()),
-    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] },
   ],
 }).catch(error => console.log(error));

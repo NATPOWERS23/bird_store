@@ -19,11 +19,11 @@ import { ButtonSize } from '@core/components/button/button';
 declare let paypal;
 
 @Component({
-    selector: 'app-paypal',
-    templateUrl: './paypal.component.html',
-    styleUrls: ['./paypal.component.scss'],
-    imports: [NgIf],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-paypal',
+  templateUrl: './paypal.component.html',
+  styleUrls: ['./paypal.component.scss'],
+  imports: [NgIf],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaypalComponent implements OnInit {
   @Input() countCart = new Observable<number>();

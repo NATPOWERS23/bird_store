@@ -55,7 +55,7 @@ export const cartReducer = createReducer(
   ),
 
   on(CartActions.loadCart, (state: CartState) => {
-    return { ...state, status: 'loading' as StateStatus};
+    return { ...state, status: 'loading' as StateStatus };
   }),
 
   on(CartActions.loadCartSuccess, (state: CartState, cart) => {

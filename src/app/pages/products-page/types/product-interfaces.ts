@@ -12,7 +12,7 @@ export interface IProduct {
 }
 
 export interface IProductRating {
-  count: number
+  count: number;
 }
 
 export interface IProductGroup {

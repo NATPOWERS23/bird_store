@@ -32,11 +32,11 @@ import {
 } from '../products-page/types/product-interfaces';
 
 @Component({
-    selector: 'app-cart',
-    templateUrl: './cart.component.html',
-    styleUrls: ['./cart.component.scss'],
-    imports: [ButtonComponent, MatCardModule, RouterLink, CommonModule],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.scss'],
+  imports: [ButtonComponent, MatCardModule, RouterLink, CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements OnInit {
   public store = inject(Store);

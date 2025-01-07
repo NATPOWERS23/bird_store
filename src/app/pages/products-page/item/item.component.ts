@@ -22,21 +22,21 @@ import {
 import { FavoritesService } from '../../../features/favorites/favorites.service';
 
 @Component({
-    selector: 'app-item',
-    templateUrl: './item.component.html',
-    styleUrls: ['./item.component.scss'],
-    imports: [
-        MaterialModule,
-        NgClass,
-        RouterLink,
-        NgStyle,
-        ReactiveFormsModule,
-        ButtonComponent,
-        ButtonCheckboxComponent,
-        CurrencyPipe,
-        NgIf,
-        MatBadgeModule,
-    ]
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.scss'],
+  imports: [
+    MaterialModule,
+    NgClass,
+    RouterLink,
+    NgStyle,
+    ReactiveFormsModule,
+    ButtonComponent,
+    ButtonCheckboxComponent,
+    CurrencyPipe,
+    NgIf,
+    MatBadgeModule,
+  ],
 })
 export class ItemComponent implements OnInit {
   @Input() public product!: IProduct;
@@ -46,7 +46,7 @@ export class ItemComponent implements OnInit {
   public quantityForm!: FormGroup<IItemForm>;
   public ButtonSize: typeof ButtonSize = ButtonSize;
 
-  public recommendationService = inject(FavoritesService)
+  public recommendationService = inject(FavoritesService);
 
   private store = inject(Store);
 

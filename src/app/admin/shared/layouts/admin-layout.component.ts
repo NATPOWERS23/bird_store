@@ -10,11 +10,11 @@ import { AlertComponent } from '../components/alert/alert.component';
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-admin-layout',
-    templateUrl: './admin-layout.component.html',
-    styleUrls: ['./admin-layout.component.scss'],
-    imports: [AlertComponent, RouterLink, NgIf, RouterLinkActive, RouterOutlet],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-admin-layout',
+  templateUrl: './admin-layout.component.html',
+  styleUrls: ['./admin-layout.component.scss'],
+  imports: [AlertComponent, RouterLink, NgIf, RouterLinkActive, RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLayoutComponent {
   public auth = inject(AuthService);

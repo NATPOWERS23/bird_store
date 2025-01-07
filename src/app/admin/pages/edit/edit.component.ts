@@ -27,18 +27,18 @@ import { FileUploaderComponent } from '../../shared/components/file-uploader/fil
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-edit',
-    templateUrl: './edit.component.html',
-    styleUrls: ['./edit.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        ReactiveFormsModule,
-        NgClass,
-        NgIf,
-        MatFormFieldModule,
-        MatInputModule,
-        FileUploaderComponent,
-    ]
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ReactiveFormsModule,
+    NgClass,
+    NgIf,
+    MatFormFieldModule,
+    MatInputModule,
+    FileUploaderComponent,
+  ],
 })
 export class EditComponent implements OnInit {
   public editForm!: FormGroup<IEditForm>;

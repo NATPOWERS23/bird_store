@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Store } from '@ngrx/store';
-import {FavoritesService} from '../../features/favorites/favorites.service';
+import { FavoritesService } from '../../features/favorites/favorites.service';
 
 import { selectGroupedCartEntries } from '../../state/cart/cart.selectors';
 import { selectAllProducts } from '../../state/products/products.selectors';
@@ -23,20 +23,20 @@ import { productsActions } from 'src/app/state/products/products.actions';
 import { RecommendationsComponent } from '../../features/recommendations/recommendations.component';
 
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.scss'],
-    imports: [
-        SearchInputComponent,
-        CustomSliderComponent,
-        RecommendationsComponent,
-        NgxPaginationModule,
-        CommonModule,
-        FilterPipe,
-        SearchPipe,
-        MatInputModule,
-        ItemComponent,
-    ]
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
+  imports: [
+    SearchInputComponent,
+    CustomSliderComponent,
+    RecommendationsComponent,
+    NgxPaginationModule,
+    CommonModule,
+    FilterPipe,
+    SearchPipe,
+    MatInputModule,
+    ItemComponent,
+  ],
 })
 export class ProductsComponent {
   public products$: Observable<IProduct[]>;

@@ -18,7 +18,10 @@ export const metaReducerCartLocalStorage = <S, A extends Action = Action>(
     }
     // save the next state to the application storage with Cart actions.
     if (action.type.includes('[Cart]')) {
-      localStorage.setSavedState((nextState as { cartEntries: CartState}).cartEntries, 'cartEntries');
+      localStorage.setSavedState(
+        (nextState as { cartEntries: CartState }).cartEntries,
+        'cartEntries'
+      );
     }
     return nextState;
   };

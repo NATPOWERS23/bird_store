@@ -11,22 +11,22 @@ import {
 import { ImageSnippet } from 'src/app/admin/pages/create/types/icreate-form';
 
 @Component({
-    selector: 'app-file-uploader',
-    templateUrl: './file-uploader.component.html',
-    styleUrls: ['./file-uploader.component.scss'],
-    imports: [NgClass, NgIf, NgStyle],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => FileUploaderComponent),
-            multi: true,
-        },
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => FileUploaderComponent),
-            multi: true,
-        },
-    ]
+  selector: 'app-file-uploader',
+  templateUrl: './file-uploader.component.html',
+  styleUrls: ['./file-uploader.component.scss'],
+  imports: [NgClass, NgIf, NgStyle],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FileUploaderComponent),
+      multi: true,
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => FileUploaderComponent),
+      multi: true,
+    },
+  ],
 })
 export class FileUploaderComponent implements ControlValueAccessor, Validator {
   public selectedFile: ImageSnippet = { src: '' };

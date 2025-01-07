@@ -1,12 +1,12 @@
-import {Injectable, inject} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import next from 'ajv/dist/vocabularies/next';
-import {environment} from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 interface IRecommendationData {
-  favorites: string[],
-  interactions: unknown
+  favorites: string[];
+  interactions: unknown;
 }
 
 @Injectable({
@@ -15,9 +15,9 @@ interface IRecommendationData {
 export class FavoritesService {
   private LOCAL_STORAGE_KEY = 'userData';
 
-  http = inject(HttpClient)
+  http = inject(HttpClient);
 
-  constructor(private fns: AngularFireFunctions) { }
+  constructor(private fns: AngularFireFunctions) {}
 
   addFavorite(itemId: string): void {
     const data: IRecommendationData = this.getLocalData();
@@ -37,7 +37,7 @@ export class FavoritesService {
   private getLocalData(): IRecommendationData {
     return JSON.parse(
       localStorage.getItem(this.LOCAL_STORAGE_KEY) ||
-      '{"favorites": [], "interactions": {}}'
+        '{"favorites": [], "interactions": {}}'
     );
   }
 
@@ -49,13 +49,13 @@ export class FavoritesService {
     const url = environment.fbConfig.fbFunctionsUrls['syncPopularProducts'];
     const params = new HttpParams({
       fromObject: {
-        favorites: favorites.join(',')
-      }
+        favorites: favorites.join(','),
+      },
     });
 
     this.http.get(url, { params }).subscribe({
       next: () => {},
-      error: err => console.log('Error occurred during sync popular', err)
+      error: err => console.log('Error occurred during sync popular', err),
     });
   }
 }

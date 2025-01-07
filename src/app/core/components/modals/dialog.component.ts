@@ -8,11 +8,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MaterialModule } from '@core/material/material.module';
 
 @Component({
-    selector: 'app-dialog',
-    templateUrl: './dialog.component.html',
-    styleUrls: ['./dialog.component.scss'],
-    imports: [MaterialModule],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-dialog',
+  templateUrl: './dialog.component.html',
+  styleUrls: ['./dialog.component.scss'],
+  imports: [MaterialModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogComponent {
   constructor(

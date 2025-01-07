@@ -21,10 +21,10 @@ import {
 import { HandleErrorsPipe } from '@core/pipes/handle-errors.pipe';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    imports: [ReactiveFormsModule, CommonModule, HandleErrorsPipe]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  imports: [ReactiveFormsModule, CommonModule, HandleErrorsPipe],
 })
 export class LoginComponent implements OnInit {
   public form!: FormGroup<ILoginForm>;

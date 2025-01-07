@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import {environment} from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { fbAuthResponse } from './auth-service';
 import { FbAuthResponse, IUser } from './login';
 
@@ -47,7 +47,7 @@ export class AuthService {
       localStorage.setItem('fb-token', response.idToken);
       localStorage.setItem('fb-token-exp', expDate.toString());
     } else {
-      localStorage.clear()
+      localStorage.clear();
     }
   }
 }

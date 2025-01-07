@@ -15,8 +15,10 @@ export const LoginEffects = createEffect(
           map((currentUser: FbAuthResponse) => {
             return authActions.loginUserSuccess({ user: currentUser });
           }),
-          catchError(err => of(
-            authActions.loginUserFailure(err as { errors: HttpErrorResponse }))
+          catchError(err =>
+            of(
+              authActions.loginUserFailure(err as { errors: HttpErrorResponse })
+            )
           )
         );
       })
