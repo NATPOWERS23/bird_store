@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Store } from '@ngrx/store';
 import { FavoritesService } from '../../features/favorites/favorites.service';
+import {
+  PopularProductsComponent
+} from '../../features/popular-products/popular-products.component';
 
 import { selectGroupedCartEntries } from '../../state/cart/cart.selectors';
 import { selectAllProducts } from '../../state/products/products.selectors';
@@ -30,6 +33,7 @@ import { RecommendationsComponent } from '../../features/recommendations/recomme
     SearchInputComponent,
     CustomSliderComponent,
     RecommendationsComponent,
+    PopularProductsComponent,
     NgxPaginationModule,
     CommonModule,
     FilterPipe,

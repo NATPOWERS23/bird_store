@@ -1,0 +1,12 @@
+.favorite {
+  &-card {
+    font-size: 0.75rem;
+    min-width: 100px;
+    aspect-ratio: 2/3;
+  }
+  &-image {
+    height: 80%;
+    background-position: center;
+    background-size: contain;
+  }
+}
