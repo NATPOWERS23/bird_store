@@ -58,6 +58,7 @@ export class CreateComponent implements OnInit {
     const product: IProduct = {
       ...this.createForm.value,
       id: this.createForm.value.name,
+      rating: 0,
       imageUrl: this.createForm.value.imageUrl?.src,
     };
     this.productService
