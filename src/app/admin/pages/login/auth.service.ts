@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { catchError, tap } from 'rxjs/operators';
+import {environment} from '../../../../environments/environment';
 import { fbAuthResponse } from './auth-service';
 import { FbAuthResponse, IUser } from './login';
 
@@ -22,7 +22,7 @@ export class AuthService {
   public login(user: IUser): Observable<FbAuthResponse> {
     return this.http
       .post<FbAuthResponse>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.fbConfig.apiKey}`,
         { ...user, returnSecureToken: true }
       )
       .pipe(

@@ -1,6 +1,8 @@
 import {Injectable, inject} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
+import next from 'ajv/dist/vocabularies/next';
+import {environment} from '../../../environments/environment';
 
 interface IRecommendationData {
   favorites: string[],
@@ -17,41 +19,43 @@ export class FavoritesService {
 
   constructor(private fns: AngularFireFunctions) { }
 
-  // Add an item to local favorites
   addFavorite(itemId: string): void {
     const data: IRecommendationData = this.getLocalData();
     if (!data.favorites.includes(itemId)) {
       data.favorites.push(itemId);
       this.saveLocalData(data);
+      this.syncPopularProductsWithServer(data.favorites);
     }
   }
 
-  testHelloWord() {
-    this.triggerSyncFunction();
-  }
-
-  // Remove an item from local favorites
   removeFavorite(itemId: string): void {
     const data: IRecommendationData = this.getLocalData();
     data.favorites = data.favorites.filter((id: string) => id !== itemId);
     this.saveLocalData(data);
   }
 
-  // Get local data from localStorage
   private getLocalData(): IRecommendationData {
-    return JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_KEY) || '{"favorites": [], "interactions": {}}');
+    return JSON.parse(
+      localStorage.getItem(this.LOCAL_STORAGE_KEY) ||
+      '{"favorites": [], "interactions": {}}'
+    );
   }
 
-  // Save data to localStorage
   private saveLocalData(data: IRecommendationData): void {
     localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(data));
   }
 
-  private triggerSyncFunction() {
-    const url = 'https://helloworld-nygdalcbqa-uc.a.run.app';
-    this.http.get(url)
-      .subscribe(response => {
-        console.log(response);
-      });
+  private syncPopularProductsWithServer(favorites: string[]) {
+    const url = environment.fbConfig.fbFunctionsUrls['syncPopularProducts'];
+    const params = new HttpParams({
+      fromObject: {
+        favorites: favorites.join(',')
+      }
+    });
+
+    this.http.get(url, { params }).subscribe({
+      next: () => {},
+      error: err => console.log('Error occurred during sync popular', err)
+    });
   }
 }

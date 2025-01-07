@@ -1,83 +1,64 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at
- * https://firebase.google.com/docs/functions
- */
 import {logger} from "firebase-functions";
 import {onRequest} from "firebase-functions/v2/https";
+import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+import Decimal from "decimal.js";
 
-export const helloWorld = onRequest({cors: false},
-  (request, response) => {
-    logger.info("Hello logs!", {structuredData: true});
-    logger.info("Hello logs1!", {structuredData: true});
-    response.send("Hello from Firebase!");
-  });
+interface DatabaseUpdates {
+  [key: string]: number;
+}
 
+admin.initializeApp();
 
-// import * as functions from 'firebase-functions';
-// import * as admin from 'firebase-admin';
-//
-// admin.initializeApp();
-//
-// interface SyncRequest {
-//   userId: string;
-//   favorites: string[];
-// }
-//
-// interface DatabaseUpdates {
-//   [key: string]: number;
-// }
-//
-// export const syncServerRecommendations =
-//   functions.https.onCall(async (data: SyncRequest, context) => {
-//     const {userId, favorites} = data;
-//     const db = admin.database();
-//
-//     try {
-//       // Store user favorites
-//       await db.ref(`/recommendations/${userId}`).set({
-//         favoriteIds: favorites,
-//         updatedAt: admin.database.ServerValue.TIMESTAMP,
-//       });
-//
-//       // Update product ratings
-//       const updates: DatabaseUpdates = {};
-//
-//       // Get existing favorites first
-//       const snapshot = await db.ref(
-//           `/recommendations/${userId}/favoriteIds`).once('value');
-//       const oldFavorites: string[] = snapshot.val() || [];
-//
-//       // Calculate differences
-//       const newFavorites = favorites.filter((id) =>
-//       !oldFavorites.includes(id));
-//
-//       // Update product ratings
-//       for (const productId of newFavorites) {
-//         const productRef = db.ref(`/products/${productId}/rating`);
-//         const ratingSnapshot = await productRef.once('value');
-//         const currentRating: number = ratingSnapshot.val() || 0;
-//         updates[`/products/${productId}/rating`] = currentRating + 0.1;
-//       }
-//
-//       // Apply all updates atomically if there are any
-//       if (Object.keys(updates).length > 0) {
-//         await db.ref().update(updates);
-//       }
-//
-//       return {success: true, message: 'Recommendations synced successfully'};
-//     } catch (error) {
-//       console.error('Error syncing recommendations:', error);
-//       throw new functions.https.HttpsError(
-//           'internal',
-//           'Failed to sync recommendations',
-//       );
-//     }
-//   });
+export const syncPopularProducts = onRequest({cors: false},
+  async (
+    request, response) => {
+    try {
+      const db = admin.database();
+
+      const favoritesString = request.query["favorites"];
+      let favoritesArray: string[] = [];
+
+      if (favoritesString && typeof favoritesString === "string") {
+        favoritesArray = [...new Set(favoritesString.split(","))];
+      }
+
+      if (favoritesArray.length === 0) {
+        response.status(400).send({
+          message: "Favorites list should not be empty",
+        });
+      }
+
+      logger.info("Update product ratings...");
+      const updates: DatabaseUpdates = {};
+
+      for (const productId of favoritesArray) {
+        const productRef = db.ref(`/products/${productId}/rating`);
+        const ratingSnapshot = await productRef.once("value");
+        const currentRating: number = ratingSnapshot.val() || 0;
+        updates[`/products/${productId}/rating`] = new Decimal(currentRating)
+          .plus(0.1).toNumber();
+
+        logger.info("Update product rating for: " + productId +
+          ". Previous rating " + currentRating + " was increased with 0.1");
+      }
+
+      if (Object.keys(updates).length > 0) {
+        logger.info("Applying all updates atomically if there are...");
+        logger.info(updates);
+        await db.ref().update(updates);
+      }
+
+      response.status(200).json({
+        message: "Popular products synced successfully",
+      });
+    } catch (error) {
+      logger.error("Error syncing populars:", error);
+      throw new functions.https.HttpsError(
+        "internal",
+        "Failed to sync populars",
+      );
+    }
+  }
+);

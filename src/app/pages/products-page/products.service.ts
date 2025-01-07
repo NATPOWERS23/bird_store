@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../../../environments/environment';
+import {environment} from '../../../environments/environment';
 import { FbCreateResponse, IProduct } from './types/product-interfaces';
 
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,7 @@ export class ProductsService {
 
   public create(product: IProduct): Observable<IProduct> {
     return this.http
-      .post<IProduct>(`${environment.fbDbUrl}/products.json`, product)
+      .post<IProduct>(`${environment.fbConfig.databaseURL}/products.json`, product)
       .pipe(
         map((response: FbCreateResponse) => {
           return { ...product, id: response.name, name: product.name };
@@ -23,7 +23,7 @@ export class ProductsService {
 
   public getAll(): Observable<IProduct[]> {
     return this.http
-      .get<{ [key: string]: IProduct }>(`${environment.fbDbUrl}/products.json`)
+      .get<{ [key: string]: IProduct }>(`${environment.fbConfig.databaseURL}/products.json`)
       .pipe(
         map((response: { [key: string]: IProduct }) => {
           return Object.keys(response).map((key: string) => ({
@@ -37,7 +37,7 @@ export class ProductsService {
 
   public getById(id: string): Observable<IProduct> {
     return this.http
-      .get<IProduct>(`${environment.fbDbUrl}/products/${id}.json`)
+      .get<IProduct>(`${environment.fbConfig.databaseURL}/products/${id}.json`)
       .pipe(
         map((product: IProduct) => {
           return { ...product, id, name: product.name };
@@ -47,19 +47,19 @@ export class ProductsService {
 
   public update(product: IProduct): Observable<IProduct> {
     return this.http.patch<IProduct>(
-      `${environment.fbDbUrl}/products/${product.id}.json`,
+      `${environment.fbConfig.databaseURL}/products/${product.id}.json`,
       product
     );
   }
 
   public remove(id: string): Observable<void> {
-    return this.http.delete<void>(`${environment.fbDbUrl}/products/${id}.json`);
+    return this.http.delete<void>(`${environment.fbConfig.databaseURL}/products/${id}.json`);
   }
 
   public getPopular(limitCount: number): Observable<IProduct[]> {
     return this.http
       .get<{ [key: string]: IProduct }>(
-        `${environment.fbDbUrl}/products.json?orderBy="rating"&limitToLast=${limitCount}`
+        `${environment.fbConfig.databaseURL}/products.json?orderBy="rating"&limitToLast=${limitCount}`
       )
       .pipe(
         map((response: { [key: string]: IProduct }) => {

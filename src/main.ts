@@ -13,7 +13,7 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
-import { environment, fbConfig } from './environments/environment';
+import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { appRoutes } from './app/app.routes';
 import { cartReducer } from './app/state/cart/cart.reducer';
@@ -60,8 +60,8 @@ bootstrapApplication(AppComponent, {
       trace: false,
       traceLimit: 75,
     connectInZone: true}),
-    { provide: FIREBASE_OPTIONS, useValue: fbConfig },
-    provideFirebaseApp(() => initializeApp(fbConfig)),
+    { provide: FIREBASE_OPTIONS, useValue: environment.fbConfig },
+    provideFirebaseApp(() => initializeApp(environment.fbConfig)),
     provideFunctions(() => getFunctions()),
     provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase()),
