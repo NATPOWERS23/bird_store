@@ -13,7 +13,7 @@ import {onRequest} from "firebase-functions/v2/https";
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
 
-export const helloWorld = onRequest(
+export const helloWorld = onRequest({cors: false},
   (request, response) => {
     logger.info("Hello logs!", {structuredData: true});
     logger.info("Hello logs1!", {structuredData: true});
