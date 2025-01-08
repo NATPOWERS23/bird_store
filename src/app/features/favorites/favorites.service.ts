@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import next from 'ajv/dist/vocabularies/next';
 import { environment } from '../../../environments/environment';
 
 interface IRecommendationData {
