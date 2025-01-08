@@ -63,19 +63,19 @@ export class ProductsService {
     );
   }
 
-  public getPopular(limitCount: number): Observable<IProduct[]> {
-    return this.http
-      .get<{ [key: string]: IProduct }>(
-        `${environment.fbConfig.databaseURL}/products.json?orderBy="rating"&limitToLast=${limitCount}`
-      )
-      .pipe(
-        map((response: { [key: string]: IProduct }) => {
-          return Object.keys(response).map((key: string) => ({
-            ...response[key],
-            id: key,
-            name: response[key].name,
-          }));
-        })
-      );
-  }
+  // public getPopular(limitCount: number): Observable<IProduct[]> {
+  //   return this.http
+  //     .get<{ [key: string]: IProduct }>(
+  //       `${environment.fbConfig.databaseURL}/products.json?orderBy="rating"&limitToLast=${limitCount}`
+  //     )
+  //     .pipe(
+  //       map((response: { [key: string]: IProduct }) => {
+  //         return Object.keys(response).map((key: string) => ({
+  //           ...response[key],
+  //           id: key,
+  //           name: response[key].name,
+  //         }));
+  //       })
+  //     );
+  // }
 }
