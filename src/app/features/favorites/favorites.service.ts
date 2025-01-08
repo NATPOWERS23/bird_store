@@ -1,6 +1,5 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { environment } from '../../../environments/environment';
 
 interface IRecommendationData {
@@ -16,7 +15,7 @@ export class FavoritesService {
 
   http = inject(HttpClient);
 
-  constructor(private fns: AngularFireFunctions) {}
+  constructor() {}
 
   addFavorite(itemId: string): void {
     const data: IRecommendationData = this.getLocalData();
