@@ -4,12 +4,10 @@ import { FavoritesService } from '../favorites/favorites.service';
 import { CommonModule } from '@angular/common';
 import { ButtonSize } from '@core/components/button/button';
 import { MatCardModule } from '@angular/material/card';
-import { ButtonComponent } from '@core/components/button/button.component';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recommendations',
-  imports: [CommonModule, ButtonComponent, MatCardModule, RouterLink],
+  imports: [CommonModule, MatCardModule],
   templateUrl: './recommendations.component.html',
   styleUrl: './recommendations.component.scss',
 })

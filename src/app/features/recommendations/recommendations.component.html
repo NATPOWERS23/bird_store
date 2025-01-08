@@ -2,7 +2,7 @@
   <section class="py-3">
     <h2 class="text-secondary text-center">Recommendations</h2>
     @for (item of recommendations; track item.id) {
-      <p>{{ item.id }} - {{ item.rating?.count }} votes</p>
+      <p>{{ item.id }} - {{ item.rating }} votes</p>
       <button (click)="addFavorite(item.id)">Add to Favorites</button>
     }
   </section>
